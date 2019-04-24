@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://18.220.104.167/api/v1/auth/validate
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Api-Key:
+      - jsaxYfyeRjrJozbnM9bVOaji2D0MeNjPSwOODqlkApv_dL9d_6Sy2OBaPF8
+      Authorization:
+      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTYwOTQ3MTh9._B52LthGFjB6IalavYcXDk4MaTUtZtjPPkBRHESP4sE
+      User-Agent:
+      - Faraday v0.15.4
+      Content-Length:
+      - '0'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.14.0 (Ubuntu)
+      Date:
+      - Wed, 24 Apr 2019 06:34:30 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Etag:
+      - W/"47715df4779c1b044e2374d28ee553f1"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 1a0d1fa3-d51d-471d-b827-bfbec8d9f473
+      X-Runtime:
+      - '0.007371'
+      Vary:
+      - Origin
+    body:
+      encoding: UTF-8
+      string: '{"message":"Token is valid."}'
+    http_version: 
+  recorded_at: Wed, 24 Apr 2019 06:34:30 GMT
+recorded_with: VCR 4.0.0
