@@ -1,16 +1,23 @@
 module PdvAuthApi
   module Api
     class AuthController < ApiController
-      before_action :authenticate_request
+      def create
+        auth = PdvAuthApi::V1::Auth.new(
+          email: auth_params[:email], password: auth_params[:password]
+        )
 
-    private
+        if auth.login
+          render json: { auth_token: auth.token }
+        else
+          render json: auth.errors, status: :unauthorized
+        end
+      end
 
-    def authenticate_request
-      auth_request = AuthorizeApiRequest.new(headers: request.headers)
+      private
 
-      return if auth_request.valid?
-
-      render json: { errors: auth_request.errors }, status: :unauthorized
+      def auth_params
+        params.require(:auth).permit(:email, :password)
+      end
     end
   end
 end
