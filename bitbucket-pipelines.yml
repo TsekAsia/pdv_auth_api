@@ -13,7 +13,6 @@ pipelines:
           - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
           - apt-get update
           - bundle install --path vendor/bundle
-          - bundle exec rails db:test:prepare
           - bundle exec rubocop
           - bundle exec rspec
 definitions:
