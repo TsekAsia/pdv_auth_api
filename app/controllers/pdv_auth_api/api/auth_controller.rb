@@ -11,7 +11,7 @@ module PdvAuthApi
         if auth.login
           render json: { auth_token: auth.token }
         else
-          render json: auth.errors, status: :unauthorized
+          render json: { errors: auth.errors }, status: :unauthorized
         end
       end
 
