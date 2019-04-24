@@ -145,6 +145,8 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.6)
+    rubocop-performance (1.1.0)
+      rubocop (>= 0.67.0)
     ruby-progressbar (1.10.0)
     safe_yaml (1.0.5)
     sprockets (3.7.2)
@@ -176,6 +178,7 @@ DEPENDENCIES
   pdv_auth_api!
   rspec-rails
   rubocop
+  rubocop-performance
   sqlite3
   vcr
   webmock
