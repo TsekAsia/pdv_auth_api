@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://18.220.104.167/api/v1/auth
+    body:
+      encoding: UTF-8
+      string: '{"auth":{"email":"test@testmail.dev","password":"thisisthepassword"}}'
+    headers:
+      Content-Type:
+      - application/json
+      Api-Key:
+      - jsaxYfyeRjrJozbnM9bVOaji2D0MeNjPSwOODqlkApv_dL9d_6Sy2OBaPF8
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.14.0 (Ubuntu)
+      Date:
+      - Wed, 24 Apr 2019 06:31:58 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Etag:
+      - W/"69af85f22d3a49c7a27b74094230546a"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 7a0aee1f-b58c-4617-afac-185c85649545
+      X-Runtime:
+      - '0.130274'
+      Vary:
+      - Origin
+    body:
+      encoding: UTF-8
+      string: '{"auth_token":"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTYwOTQ3MTh9._B52LthGFjB6IalavYcXDk4MaTUtZtjPPkBRHESP4sE"}'
+    http_version: 
+  recorded_at: Wed, 24 Apr 2019 06:31:58 GMT
+recorded_with: VCR 4.0.0

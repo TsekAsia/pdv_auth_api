@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://18.220.104.167/api/v1/auth
+    body:
+      encoding: UTF-8
+      string: '{"auth":{"email":"test@testmail.dev","password":"wrongpassword"}}'
+    headers:
+      Content-Type:
+      - application/json
+      Api-Key:
+      - jsaxYfyeRjrJozbnM9bVOaji2D0MeNjPSwOODqlkApv_dL9d_6Sy2OBaPF8
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Server:
+      - nginx/1.14.0 (Ubuntu)
+      Date:
+      - Wed, 24 Apr 2019 06:55:49 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - aad44a96-0de7-46a0-b599-f77cea8ffa26
+      X-Runtime:
+      - '0.135613'
+      Vary:
+      - Origin
+    body:
+      encoding: UTF-8
+      string: '{"error":{"auth":{"password":"Incorrect password."}}}'
+    http_version: 
+  recorded_at: Wed, 24 Apr 2019 06:55:49 GMT
+recorded_with: VCR 4.0.0
