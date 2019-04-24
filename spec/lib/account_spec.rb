@@ -22,5 +22,19 @@ describe PdvAuthApi::V1::Account do
     it 'fetches the account on new' do
       expect(account.user[:email]).to eq(email)
     end
+
+    it 'responds to token' do
+      expect(account).to respond_to(:token)
+      expect(account).to respond_to(:token=)
+    end
+
+    it 'responds to user' do
+      expect(account).to respond_to(:user)
+      expect(account).to respond_to(:user=)
+    end
+
+    it 'responds to response' do
+      expect(account).to respond_to(:response)
+    end
   end
 end
