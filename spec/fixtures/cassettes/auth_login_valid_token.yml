@@ -12,7 +12,7 @@ http_interactions:
       Api-Key:
       - jsaxYfyeRjrJozbnM9bVOaji2D0MeNjPSwOODqlkApv_dL9d_6Sy2OBaPF8
       Authorization:
-      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTYwOTQ3MTh9._B52LthGFjB6IalavYcXDk4MaTUtZtjPPkBRHESP4sE
+      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTYxMjA5Mzh9.vkWbaHGDZmXUnxLhPor0SQMEUrsmEDPDHszKO875R5w
       User-Agent:
       - Faraday v0.15.4
       Content-Length:
@@ -29,7 +29,7 @@ http_interactions:
       Server:
       - nginx/1.14.0 (Ubuntu)
       Date:
-      - Wed, 24 Apr 2019 06:34:30 GMT
+      - Wed, 24 Apr 2019 13:48:59 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -41,14 +41,14 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 1a0d1fa3-d51d-471d-b827-bfbec8d9f473
+      - '0308fd5e-c804-47fe-9776-9b921ae03672'
       X-Runtime:
-      - '0.007371'
+      - '0.006552'
       Vary:
       - Origin
     body:
       encoding: UTF-8
       string: '{"message":"Token is valid."}'
     http_version: 
-  recorded_at: Wed, 24 Apr 2019 06:34:30 GMT
+  recorded_at: Wed, 24 Apr 2019 13:48:59 GMT
 recorded_with: VCR 4.0.0

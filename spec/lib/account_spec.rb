@@ -1,0 +1,26 @@
+require 'rails_helper'
+
+describe PdvAuthApi::V1::Account do
+  let(:email) { 'test@testmail.dev' }
+  let(:token) do
+    password = 'thisisthepassword'
+
+    VCR.use_cassette('auth_valid_login') do
+      token = PdvAuthApi::V1::Auth.new(email: email, password: password).login
+
+      return token
+    end
+  end
+
+  let(:account) do
+    VCR.use_cassette('accounts_get_success') do
+      PdvAuthApi::V1::Account.new(token: token)
+    end
+  end
+
+  describe '.new' do
+    it 'fetches the account on new' do
+      expect(account.user[:email]).to eq(email)
+    end
+  end
+end

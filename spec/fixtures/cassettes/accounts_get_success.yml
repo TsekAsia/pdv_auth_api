@@ -1,16 +1,18 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: http://18.220.104.167/api/v1/auth
+    method: get
+    uri: http://18.220.104.167/api/v1/account
     body:
-      encoding: UTF-8
-      string: '{"auth":{"email":"test@testmail.dev","password":"thisisthepassword"}}'
+      encoding: US-ASCII
+      string: ''
     headers:
       Content-Type:
       - application/json
       Api-Key:
       - jsaxYfyeRjrJozbnM9bVOaji2D0MeNjPSwOODqlkApv_dL9d_6Sy2OBaPF8
+      Authorization:
+      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTYxMjA5Mzh9.vkWbaHGDZmXUnxLhPor0SQMEUrsmEDPDHszKO875R5w
       User-Agent:
       - Faraday v0.15.4
       Accept-Encoding:
@@ -33,18 +35,18 @@ http_interactions:
       Connection:
       - keep-alive
       Etag:
-      - W/"acfaa28fc5b7d17651019c6e1b54e1d2"
+      - W/"e1d2153eaa645c2a76ce2c8e1f118f33"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - ebcb38e2-4b1a-49c6-a641-98c43fb86083
+      - fd7a8af0-3040-4099-afca-8b7714165c81
       X-Runtime:
-      - '0.129324'
+      - '0.008361'
       Vary:
       - Origin
     body:
       encoding: UTF-8
-      string: '{"auth_token":"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTYxMjA5Mzh9.vkWbaHGDZmXUnxLhPor0SQMEUrsmEDPDHszKO875R5w"}'
+      string: '{"id":1,"first_name":null,"middle_name":null,"last_name":null,"username":"","email":"test@testmail.dev","created_at":"2019-04-24T01:20:34.487Z","updated_at":"2019-04-24T01:20:34.487Z"}'
     http_version: 
-  recorded_at: Wed, 24 Apr 2019 13:48:58 GMT
+  recorded_at: Wed, 24 Apr 2019 13:48:59 GMT
 recorded_with: VCR 4.0.0
