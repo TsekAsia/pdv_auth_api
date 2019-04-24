@@ -1,7 +1,7 @@
 module PdvAuthApi
   module V1
     class Account
-      attr_accessor :token, :user
+      attr_accessor :token, :user, :response, :errors
 
       def initialize(**params)
         assign_attributes(params)
@@ -10,7 +10,16 @@ module PdvAuthApi
       end
 
       def fetch
-        authenticated_api.get 'account'
+        @response = authenticated_api.get 'account'
+        body = JSON.parse(@response.body, symbolize_names: true)
+
+        if @response.status == 200
+          @user = body
+          true
+        else
+          @errors = body[:errors]
+          false
+        end
       end
 
       private
