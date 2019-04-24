@@ -1,0 +1,22 @@
+image: ruby:2.6.1
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - bundler
+          - yarn
+        script:
+          - curl -sL https://deb.nodesource.com/setup_8.x | bash -
+          - apt-get update && apt-get install -y nodejs
+          - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+          - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+          - apt-get update
+          - bundle install --path vendor/bundle
+          - bundle exec rails db:test:prepare
+          - bundle exec rubocop
+          - bundle exec rspec
+definitions:
+  caches:
+    bundler: vendor/bundle
+    yarn: node_modules
