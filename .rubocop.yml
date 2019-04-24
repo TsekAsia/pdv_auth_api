@@ -7,6 +7,7 @@ AllCops:
     - db/**/*
     - node_modules/**/*
     - config/initializers/devise.rb
+    - spec/dummy/db/**/*
 
 Documentation:
   Enabled: false
