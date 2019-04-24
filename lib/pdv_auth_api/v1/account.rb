@@ -6,17 +6,17 @@ module PdvAuthApi
       def initialize(**params)
         assign_attributes(params)
 
-        fetch_user
+        fetch if @token
+      end
+
+      def fetch
+        authenticated_api.get 'account'
       end
 
       private
 
       def assign_attributes(params)
         @token = params[:token] if params[:token]
-      end
-
-      def fetch_user
-        authenticated_api.get 'account'
       end
 
       def authenticated_api
