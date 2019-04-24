@@ -1,6 +1,8 @@
 module PdvAuthApi
   module Api
     class AuthController < ApiController
+      skip_before_action :authenticate_request, only: :create
+
       def create
         auth = PdvAuthApi::V1::Auth.new(
           email: auth_params[:email], password: auth_params[:password]
@@ -11,6 +13,10 @@ module PdvAuthApi
         else
           render json: auth.errors, status: :unauthorized
         end
+      end
+
+      def validate
+        render json: { message: 'Token is valid' }, status: :ok
       end
 
       private
