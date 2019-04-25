@@ -9,7 +9,7 @@ describe 'GET api/companies' do
   end
 
   before do
-    VCR.use_cassette('auth_login_valid') do
+    VCR.use_cassette('auth_login_valid_token') do
       VCR.use_cassette('accounts_get_success') do
         VCR.use_cassette('company_all') do
           get api_companies_url, headers: {
