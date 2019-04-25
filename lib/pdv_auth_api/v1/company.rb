@@ -2,7 +2,7 @@ module PdvAuthApi
   module V1
     class Company
       attr_accessor :company, :response, :name, :slug, :created_at,
-                    :account, :errors
+                    :account, :errors, :membership_hash
 
       EDITABLE_ATTRIBUTES = %i[name slug].freeze
 
@@ -89,6 +89,18 @@ module PdvAuthApi
         end
 
         update(new_attrs)
+      end
+
+      def membership
+        @response = authenticated_api.get "companies/#{slug}/my_membership"
+        body = JSON.parse(@response.body, symbolize_names: true)
+
+        if @response.status == 200
+          body
+        else
+          @errors = body.error
+          false
+        end
       end
 
       private

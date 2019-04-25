@@ -185,31 +185,29 @@ describe PdvAuthApi::V1::Company do
   end
 
   describe '#membership' do
-    VCR.use_cassette('accounts_get_success') do
-      VCR.use_cassette('company_find') do
-        VCR.use_cassette('company_membership') do
-          company.account = PdvAuthApi::V1::Account.new(token: token)
-                                                   .fetch
+    before do
+      VCR.use_cassette('accounts_get_success') do
+        VCR.use_cassette('company_find') do
+          VCR.use_cassette('company_membership') do
+            company.account = PdvAuthApi::V1::Account.new(token: token)
+                                                     .fetch
 
-          company.find(slug: 'discipline-success')
+            company.find(slug: 'discipline-success')
 
-          @response = company.membership
+            @response = company.membership
+          end
         end
       end
     end
 
     it 'responds with success' do
-      expect(@response.response.status).to eq(200)
+      expect(company.response.status).to eq(200)
     end
 
     it 'fetches a membership hash' do
       expect(@response.keys).to contain_exactly(
         :company, :user, :created_at, :role
       )
-    end
-
-    it 'assigns the response to membership' do
-      expect(@response.membership).to eq(@response)
     end
   end
 
