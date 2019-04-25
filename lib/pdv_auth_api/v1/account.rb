@@ -73,7 +73,15 @@ module PdvAuthApi
 
         @response = authenticated_api.patch 'account/change_password',
                                             change_password_params
-        @response
+
+        body = JSON.parse(@response.body, symbolize_names: true)
+
+        if @response.status == 200
+          true
+        else
+          @errors = body.errors
+          false
+        end
       end
 
       private
