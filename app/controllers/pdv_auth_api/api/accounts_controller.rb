@@ -6,7 +6,7 @@ module PdvAuthApi
       end
 
       def update
-        if @current_user.update(update_params)
+        if @current_user.update(update_params.to_hash.symbolize_keys)
           render json: @current_user.user
         else
           render json: { errors: @current_user.errors },
@@ -15,7 +15,9 @@ module PdvAuthApi
       end
 
       def change_password
-        if @current_user.change_password(change_password_params)
+        if @current_user.change_password(
+          change_password_params.to_hash.symbolize_keys
+        )
           render json: { message: 'Updated password.' }, status: :ok
         else
           render json: { errors: @current_user.errors },
