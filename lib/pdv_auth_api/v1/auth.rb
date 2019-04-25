@@ -18,8 +18,7 @@ module PdvAuthApi
 
         if @response.status == 200
           @token = body[:auth_token]
-          @user = Account.new(token: @token)
-          @user.fetch
+          @user = Account.new(token: @token).fetch
           @user_params = body
 
           @token
@@ -35,8 +34,7 @@ module PdvAuthApi
         @response = authenticated_api.post 'auth/validate'
 
         if response.status == 200
-          @user = Account.new(token: @token)
-          @user.fetch
+          @user = Account.new(token: @token).fetch
           true
         else
           false

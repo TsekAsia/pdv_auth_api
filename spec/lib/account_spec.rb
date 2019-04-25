@@ -25,15 +25,14 @@ describe PdvAuthApi::V1::Account do
     end
   end
 
-  describe '.fetch' do
+  describe '#fetch' do
     context 'valid token' do
       before do
-        token = ''
-
         VCR.use_cassette('auth_valid_login') do
           VCR.use_cassette('accounts_get_success') do
-            token = PdvAuthApi::V1::Auth.new(email: email, password: password)
-                                        .login
+            account.token = PdvAuthApi::V1::Auth.new(
+              email: email, password: password
+            ).login
           end
         end
 
@@ -89,6 +88,37 @@ describe PdvAuthApi::V1::Account do
       it 'assigns errors' do
         expect(account.errors.empty?).to eq(false)
       end
+    end
+  end
+
+  describe '#update' do
+    before do
+      VCR.use_cassette('auth_valid_login') do
+        VCR.use_cassette('accounts_get_success') do
+          account.token = PdvAuthApi::V1::Auth.new(
+            email: email, password: password
+          ).login
+        end
+      end
+
+      VCR.use_cassette('accounts_get_success') do
+        account.fetch
+      end
+
+      update_params = {
+        id: 200,
+        first_name: 'Tony',
+        last_name: 'Stark',
+        username: 'ironman'
+      }
+
+      VCR.use_cassette('account_update_success') do
+        account.update(update_params)
+      end
+    end
+
+    it 'responds with success' do
+      expect(account.response.status).to eq(200)
     end
   end
 end

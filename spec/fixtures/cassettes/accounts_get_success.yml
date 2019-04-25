@@ -1,18 +1,16 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: http://18.220.104.167/api/v1/account
+    method: post
+    uri: http://18.220.104.167/api/v1/auth
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: '{"auth":{"email":"test@testmail.dev","password":"thisisthepassword"}}'
     headers:
       Content-Type:
       - application/json
       Api-Key:
       - jsaxYfyeRjrJozbnM9bVOaji2D0MeNjPSwOODqlkApv_dL9d_6Sy2OBaPF8
-      Authorization:
-      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTYxMjA5Mzh9.vkWbaHGDZmXUnxLhPor0SQMEUrsmEDPDHszKO875R5w
       User-Agent:
       - Faraday v0.15.4
       Accept-Encoding:
@@ -27,7 +25,56 @@ http_interactions:
       Server:
       - nginx/1.14.0 (Ubuntu)
       Date:
-      - Wed, 24 Apr 2019 13:48:58 GMT
+      - Thu, 25 Apr 2019 05:39:50 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Etag:
+      - W/"1eb549cd3fdeaa1e452e24aea5d6afab"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - e40c4bd0-7d7e-4450-b3ad-8ae9be91211e
+      X-Runtime:
+      - '0.084902'
+      Vary:
+      - Origin
+    body:
+      encoding: UTF-8
+      string: '{"auth_token":"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTYxNzc5OTB9.2NNSvk2JggpQUlPJr-zZVy7kNVssfwZin9c-0aJjN6g"}'
+    http_version: 
+  recorded_at: Thu, 25 Apr 2019 05:39:50 GMT
+- request:
+    method: get
+    uri: http://18.220.104.167/api/v1/account
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Api-Key:
+      - jsaxYfyeRjrJozbnM9bVOaji2D0MeNjPSwOODqlkApv_dL9d_6Sy2OBaPF8
+      Authorization:
+      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTYxNzc5OTB9.2NNSvk2JggpQUlPJr-zZVy7kNVssfwZin9c-0aJjN6g
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.14.0 (Ubuntu)
+      Date:
+      - Thu, 25 Apr 2019 05:39:51 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -39,14 +86,14 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - fd7a8af0-3040-4099-afca-8b7714165c81
+      - f35a3f77-0f74-4099-94c0-428778b34da5
       X-Runtime:
-      - '0.008361'
+      - '0.014178'
       Vary:
       - Origin
     body:
       encoding: UTF-8
       string: '{"id":1,"first_name":null,"middle_name":null,"last_name":null,"username":"","email":"test@testmail.dev","created_at":"2019-04-24T01:20:34.487Z","updated_at":"2019-04-24T01:20:34.487Z"}'
     http_version: 
-  recorded_at: Wed, 24 Apr 2019 13:48:59 GMT
+  recorded_at: Thu, 25 Apr 2019 05:39:51 GMT
 recorded_with: VCR 4.0.0
