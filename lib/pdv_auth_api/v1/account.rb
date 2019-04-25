@@ -79,7 +79,7 @@ module PdvAuthApi
         if @response.status == 200
           true
         else
-          @errors = body.errors
+          @errors = body[:errors]
           false
         end
       end
