@@ -8,20 +8,18 @@ describe PdvAuthApi::V1::Company do
     "#{a}#{b}"
   end
 
-  let(:account) do
-    VCR.use_cassette('accounts_get_success') do
-      PdvAuthApi::V1::Account.new(token: token).fetch
-    end
-  end
-
-  let(:company) { PdvAuthApi::V1::Company.new(user: account) }
+  let(:company) { PdvAuthApi::V1::Company.new }
 
   describe '#create' do
     before do
-      create_params = { name: 'ZZYZX', slug: 'zzyzx' }
+      @create_params = { name: 'ZZYZX', slug: 'zzyzx' }
 
-      VCR.use_cassette('company_create') do
-        @response = company.create(create_params)
+      VCR.use_cassette('accounts_get_success') do
+        VCR.use_cassette('company_create') do
+          company.account = PdvAuthApi::V1::Account.new(token: token).fetch
+
+          @response = company.create(@create_params)
+        end
       end
     end
 
@@ -40,8 +38,8 @@ describe PdvAuthApi::V1::Company do
     end
 
     it 'assigns attributes' do
-      expect(@response.name).to eq(create_params[:name])
-      expect(@response.slug).to eq(create_params[:slug])
+      expect(@response.name).to eq(@create_params[:name])
+      expect(@response.slug).to eq(@create_params[:slug])
       expect(@response.created_at).to eq(company.company[:created_at])
     end
   end
