@@ -119,6 +119,18 @@ module PdvAuthApi
         end
       end
 
+      def members
+        @response = authenticated_api.get "companies/#{slug}/members"
+        body = JSON.parse(@response.body, symbolize_names: true)
+
+        if @response.status == 200
+          body
+        else
+          @errors = body.error
+          false
+        end
+      end
+
       private
 
       def authenticated_api
