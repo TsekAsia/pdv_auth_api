@@ -103,6 +103,85 @@ describe PdvAuthApi::V1::Company do
   end
 
   describe '#update' do
+    before do
+      @update_params = {
+        name: 'xzyzz',
+        slug: 'xzyzz'
+      }
+
+      VCR.use_cassette('accounts_get_success') do
+        VCR.use_cassette('company_find') do
+          VCR.use_cassette('company_update') do
+            company.account = PdvAuthApi::V1::Account.new(token: token)
+                                                     .fetch
+
+            company.find('zzyzx')
+
+            @response = company.update(@update_params)
+          end
+        end
+      end
+    end
+
+    it 'responds with success' do
+      expect(@response.response.status).to eq(200)
+    end
+
+    it 'returns a company object' do
+      expect(@response).to be_a(PdvAuthApi::V1::Company)
+    end
+
+    it 'assigns a company hash' do
+      expect(@response.company.keys).to contain_exactly(
+        :name, :slug, :created_at
+      )
+    end
+
+    it 'assigns attributes' do
+      expect(@response.name).to eq(company.company[:name])
+      expect(@response.slug).to eq(company.company[:slug])
+      expect(@response.created_at).to eq(company.company[:created_at])
+    end
+  end
+
+  describe '#save' do
+    before do
+      VCR.use_cassette('accounts_get_success') do
+        VCR.use_cassette('company_find') do
+          VCR.use_cassette('company_save') do
+            company.account = PdvAuthApi::V1::Account.new(token: token)
+                                                     .fetch
+
+            company.find('xzyzz')
+
+            company.name = 'Discipline to Success'
+            company.slug = 'discipline-success'
+
+            @response = company.save
+          end
+        end
+      end
+    end
+
+    it 'responds with success' do
+      expect(@response.response.status).to eq(200)
+    end
+
+    it 'returns a company object' do
+      expect(@response).to be_a(PdvAuthApi::V1::Company)
+    end
+
+    it 'assigns a company hash' do
+      expect(@response.company.keys).to contain_exactly(
+        :name, :slug, :created_at
+      )
+    end
+
+    it 'assigns attributes' do
+      expect(@response.name).to eq(company.company[:name])
+      expect(@response.slug).to eq(company.company[:slug])
+      expect(@response.created_at).to eq(company.company[:created_at])
+    end
   end
 
   describe '#membership' do
