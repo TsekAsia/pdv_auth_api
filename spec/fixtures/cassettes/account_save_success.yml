@@ -5,14 +5,14 @@ http_interactions:
     uri: http://18.220.104.167/api/v1/account
     body:
       encoding: UTF-8
-      string: '{"user":{"first_name":"Tony","last_name":"Stark","username":"ironman"}}'
+      string: '{"user":{"first_name":"Thor","last_name":"Odinson","username":"therealgodofthunder"}}'
     headers:
       Content-Type:
       - application/json
       Api-Key:
       - jsaxYfyeRjrJozbnM9bVOaji2D0MeNjPSwOODqlkApv_dL9d_6Sy2OBaPF8
       Authorization:
-      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTYxNzc5OTB9.2NNSvk2JggpQUlPJr-zZVy7kNVssfwZin9c-0aJjN6g
+      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTY3Nzk0NTB9.kF0VyQtPNpYZ8B5uLMuAPcq2gkzWA6JtpOwJgQTk8Cs
       User-Agent:
       - Faraday v0.15.4
       Accept-Encoding:
@@ -27,7 +27,7 @@ http_interactions:
       Server:
       - nginx/1.14.0 (Ubuntu)
       Date:
-      - Thu, 25 Apr 2019 05:50:15 GMT
+      - Thu, 25 Apr 2019 06:53:52 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -35,18 +35,18 @@ http_interactions:
       Connection:
       - keep-alive
       Etag:
-      - W/"cc356f3189e3ff7b66b898485b2831ca"
+      - W/"d7009bb25b6fbe54fa09502597101c07"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - d575bd98-6c82-4f69-865f-8adfe1ff73d8
+      - 7c781767-9150-4609-896b-830f1aa7fd43
       X-Runtime:
-      - '0.081394'
+      - '0.018598'
       Vary:
       - Origin
     body:
       encoding: UTF-8
-      string: '{"id":1,"first_name":"Tony","middle_name":null,"last_name":"Stark","username":"ironman","email":"test@testmail.dev","created_at":"2019-04-24T01:20:34.487Z","updated_at":"2019-04-25T05:44:27.630Z"}'
+      string: '{"id":1,"first_name":"Thor","middle_name":null,"last_name":"Odinson","username":"therealgodofthunder","email":"test@testmail.dev","created_at":"2019-04-24T01:20:34.487Z","updated_at":"2019-04-25T06:53:52.877Z"}'
     http_version: 
-  recorded_at: Thu, 25 Apr 2019 05:50:15 GMT
+  recorded_at: Thu, 25 Apr 2019 06:53:53 GMT
 recorded_with: VCR 4.0.0

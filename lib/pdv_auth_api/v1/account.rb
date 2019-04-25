@@ -62,6 +62,20 @@ module PdvAuthApi
         PdvAuthApi::Connection.new(token: @token).api
       end
 
+      def change_password(**params)
+        change_password_params = {
+          user: {
+            old_password: params[:old_password],
+            password: params[:password],
+            password_confirmation: params[:password_confirmation]
+          }
+        }.to_json
+
+        @response = authenticated_api.patch 'account/change_password',
+                                            change_password_params
+        @response
+      end
+
       private
 
       def assign_attributes(params)

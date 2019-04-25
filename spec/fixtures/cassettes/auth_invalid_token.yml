@@ -29,7 +29,7 @@ http_interactions:
       Server:
       - nginx/1.14.0 (Ubuntu)
       Date:
-      - Thu, 25 Apr 2019 05:39:54 GMT
+      - Thu, 25 Apr 2019 06:44:13 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -39,14 +39,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 4ccd5830-f1bb-4fe9-838b-8070eed98441
+      - b969705b-a808-4a4d-8379-43488ba1cccf
       X-Runtime:
-      - '0.004621'
+      - '0.004339'
       Vary:
       - Origin
     body:
       encoding: UTF-8
       string: '{"errors":{"token":"Token invalid"}}'
     http_version: 
-  recorded_at: Thu, 25 Apr 2019 05:39:54 GMT
+  recorded_at: Thu, 25 Apr 2019 06:44:13 GMT
 recorded_with: VCR 4.0.0

@@ -144,9 +144,9 @@ describe PdvAuthApi::V1::Account do
       end
 
       account.id = 200
-      account.first_name = 'Tony'
-      account.last_name = 'Stark'
-      account.username = 'ironman'
+      account.first_name = 'Thor'
+      account.last_name = 'Odinson'
+      account.username = 'therealgodofthunder'
 
       VCR.use_cassette('account_save_success') do
         account.save
@@ -158,10 +158,62 @@ describe PdvAuthApi::V1::Account do
     end
 
     it 'only selects editable attributes' do
-      expect(account.first_name).to eq('Tony')
-      expect(account.last_name).to eq('Stark')
-      expect(account.username).to eq('ironman')
+      expect(account.first_name).to eq('Thor')
+      expect(account.last_name).to eq('Odinson')
+      expect(account.username).to eq('therealgodofthunder')
       expect(account.id).not_to eq(200)
+    end
+  end
+
+  describe '#change_password' do
+    before do
+      VCR.use_cassette('auth_valid_login') do
+        VCR.use_cassette('accounts_get_success') do
+          account.token = PdvAuthApi::V1::Auth.new(
+            email: email, password: password
+          ).login
+        end
+      end
+
+      VCR.use_cassette('accounts_get_success') do
+        account.fetch
+      end
+    end
+
+    context 'all fields valid' do
+      before do
+        change_password_params = {
+          old_password: password,
+          password: password,
+          password_confirmation: password
+        }
+
+        VCR.use_cassette('account_change_password_success') do
+          account.change_password(change_password_params)
+        end
+      end
+
+      it 'should respond with success' do
+        expect(account.response.status).to eq(200)
+      end
+    end
+
+    context 'fields are invalid' do
+      before do
+        change_password_params = {
+          old_password: password,
+          password: 'notthesame',
+          password_confirmation: 'withthispassword'
+        }
+
+        VCR.use_cassette('account_change_password_fail') do
+          account.change_password(change_password_params)
+        end
+      end
+
+      it 'should respond with unprocessable entity' do
+        expect(account.response.status).to eq(422)
+      end
     end
   end
 end
