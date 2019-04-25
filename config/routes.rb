@@ -4,5 +4,8 @@ PdvAuthApi::Engine.routes.draw do
       post :validate, on: :collection
     end
     resources :registrations, only: :create
+    resource :account, only: %i[show update] do
+      patch :change_password
+    end
   end
 end
