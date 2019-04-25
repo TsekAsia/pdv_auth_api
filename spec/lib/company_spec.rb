@@ -251,6 +251,35 @@ describe PdvAuthApi::V1::Company do
   end
 
   describe '#members' do
+    before do
+      VCR.use_cassette('accounts_get_success') do
+        VCR.use_cassette('company_find') do
+          VCR.use_cassette('company_members') do
+            company.account = PdvAuthApi::V1::Account.new(token: token)
+                                                     .fetch
+
+            company.find(slug: 'discipline-success')
+
+            @response = company.members
+          end
+        end
+      end
+    end
+
+    it 'responds with success' do
+      expect(company.response.status).to eq(200)
+    end
+
+    it 'fetches an array of members' do
+      expect(@response.size).to eq(5)
+    end
+
+    it 'array has a user hash' do
+      expect(@response.first.keys).to contain_exactly(
+        :id, :first_name, :last_name, :middle_name, :username, :email,
+        :created_at, :updated_at
+      )
+    end
   end
 
   describe '#change_role' do
