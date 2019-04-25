@@ -1,7 +1,9 @@
 module PdvAuthApi
   module V1
     class Account
-      attr_accessor :token, :user, :response, :errors
+      attr_accessor :token, :user, :response, :errors,
+                    :id, :first_name, :middle_name, :last_name, :email,
+                    :created_at, :updated_at, :username
 
       def initialize(**params)
         assign_attributes(params)
@@ -15,6 +17,7 @@ module PdvAuthApi
         body = JSON.parse(@response.body, symbolize_names: true)
 
         if @response.status == 200
+          assign_attributes(body)
           @user = body
           true
         else
@@ -30,7 +33,7 @@ module PdvAuthApi
       private
 
       def assign_attributes(params)
-        @token = params[:token] if params[:token]
+        params.each { |key, attr| send(:"#{key}=", attr) }
       end
     end
   end

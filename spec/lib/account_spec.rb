@@ -60,6 +60,17 @@ describe PdvAuthApi::V1::Account do
       it 'responds with 200' do
         expect(account.response.status).to eq(200)
       end
+
+      it 'assigns attributes to object' do
+        expect(account.email).to eq(account.user[:email])
+        expect(account.id).to eq(account.user[:id])
+        expect(account.username).to eq(account.user[:username])
+        expect(account.first_name).to eq(account.user[:first_name])
+        expect(account.middle_name).to eq(account.user[:middle_name])
+        expect(account.last_name).to eq(account.user[:last_name])
+        expect(account.created_at).to eq(account.user[:created_at])
+        expect(account.updated_at).to eq(account.user[:updated_at])
+      end
     end
 
     context 'invalid token' do
