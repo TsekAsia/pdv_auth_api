@@ -115,7 +115,7 @@ describe PdvAuthApi::V1::Company do
             company.account = PdvAuthApi::V1::Account.new(token: token)
                                                      .fetch
 
-            company.find('zzyzx')
+            company.find(slug: 'zzyzx')
 
             @response = company.update(@update_params)
           end
@@ -152,7 +152,7 @@ describe PdvAuthApi::V1::Company do
             company.account = PdvAuthApi::V1::Account.new(token: token)
                                                      .fetch
 
-            company.find('xzyzz')
+            company.find(slug: 'xzyzz')
 
             company.name = 'Discipline to Success'
             company.slug = 'discipline-success'
