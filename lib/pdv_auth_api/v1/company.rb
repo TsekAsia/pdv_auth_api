@@ -79,6 +79,18 @@ module PdvAuthApi
         end
       end
 
+      def save
+        new_attrs = {}
+
+        EDITABLE_ATTRIBUTES.each do |key|
+          next unless send(key) != company[:"#{key}"]
+
+          new_attrs[:"#{key}"] = send(key)
+        end
+
+        update(new_attrs)
+      end
+
       private
 
       def authenticated_api
