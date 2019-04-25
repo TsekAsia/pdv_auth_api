@@ -105,7 +105,7 @@ describe PdvAuthApi::V1::Account do
         account.fetch
       end
 
-      update_params = {
+      @update_params = {
         id: 200,
         first_name: 'Tony',
         last_name: 'Stark',
@@ -113,12 +113,55 @@ describe PdvAuthApi::V1::Account do
       }
 
       VCR.use_cassette('account_update_success') do
-        account.update(update_params)
+        account.update(@update_params)
       end
     end
 
     it 'responds with success' do
       expect(account.response.status).to eq(200)
+    end
+
+    it 'only selects editable attributes' do
+      expect(@update_params[:first_name]).to eq(account.first_name)
+      expect(@update_params[:last_name]).to eq(account.last_name)
+      expect(@update_params[:username]).to eq(account.username)
+      expect(@update_params[:id]).not_to eq(account.id)
+    end
+  end
+
+  describe '#save' do
+    before do
+      VCR.use_cassette('auth_valid_login') do
+        VCR.use_cassette('accounts_get_success') do
+          account.token = PdvAuthApi::V1::Auth.new(
+            email: email, password: password
+          ).login
+        end
+      end
+
+      VCR.use_cassette('accounts_get_success') do
+        account.fetch
+      end
+
+      account.id = 200
+      account.first_name = 'Tony'
+      account.last_name = 'Stark'
+      account.username = 'ironman'
+
+      VCR.use_cassette('account_save_success') do
+        account.save
+      end
+    end
+
+    it 'responds with success' do
+      expect(account.response.status).to eq(200)
+    end
+
+    it 'only selects editable attributes' do
+      expect(account.first_name).to eq('Tony')
+      expect(account.last_name).to eq('Stark')
+      expect(account.username).to eq('ironman')
+      expect(account.id).not_to eq(200)
     end
   end
 end
