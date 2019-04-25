@@ -283,5 +283,38 @@ describe PdvAuthApi::V1::Company do
   end
 
   describe '#change_role' do
+    before do
+      @change_role_params = {
+        id: 13,
+        role: 'administrator'
+      }
+
+      VCR.use_cassette('accounts_get_success') do
+        VCR.use_cassette('company_find') do
+          VCR.use_cassette('company_change_roles') do
+            company.account = PdvAuthApi::V1::Account.new(token: token)
+                                                     .fetch
+
+            company.find(slug: 'discipline-success')
+
+            @response = company.change_role(@change_role_params)
+          end
+        end
+      end
+    end
+
+    it 'responds with success' do
+      expect(company.response.status).to eq(200)
+    end
+
+    it 'fetches a membership hash' do
+      expect(@response.keys).to contain_exactly(
+        :company, :user, :created_at, :role
+      )
+    end
+
+    it 'changes the role of the user' do
+      expect(@response[:role]).to eq('administrator')
+    end
   end
 end
