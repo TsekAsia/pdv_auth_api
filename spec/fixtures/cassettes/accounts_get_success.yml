@@ -1,10 +1,10 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: http://18.220.104.167/api/v1/auth/validate
+    method: get
+    uri: http://18.220.104.167/api/v1/account
     body:
-      encoding: UTF-8
+      encoding: US-ASCII
       string: ''
     headers:
       Content-Type:
@@ -12,41 +12,41 @@ http_interactions:
       Api-Key:
       - jsaxYfyeRjrJozbnM9bVOaji2D0MeNjPSwOODqlkApv_dL9d_6Sy2OBaPF8
       Authorization:
-      - Token invalid_token
+      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTY3Nzk0NTB9.kF0VyQtPNpYZ8B5uLMuAPcq2gkzWA6JtpOwJgQTk8Cs
       User-Agent:
       - Faraday v0.15.4
-      Content-Length:
-      - '0'
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 200
+      message: OK
     headers:
       Server:
       - nginx/1.14.0 (Ubuntu)
       Date:
-      - Thu, 25 Apr 2019 06:44:13 GMT
+      - Thu, 25 Apr 2019 06:48:37 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
+      Etag:
+      - W/"cc356f3189e3ff7b66b898485b2831ca"
       Cache-Control:
-      - no-cache
+      - max-age=0, private, must-revalidate
       X-Request-Id:
-      - b969705b-a808-4a4d-8379-43488ba1cccf
+      - 4e8bf8ec-1a78-4dd3-a09c-e9407ec67112
       X-Runtime:
-      - '0.004339'
+      - '0.006299'
       Vary:
       - Origin
     body:
       encoding: UTF-8
-      string: '{"errors":{"token":"Token invalid"}}'
+      string: '{"id":1,"first_name":"Tony","middle_name":null,"last_name":"Stark","username":"ironman","email":"test@testmail.dev","created_at":"2019-04-24T01:20:34.487Z","updated_at":"2019-04-25T05:44:27.630Z"}'
     http_version: 
-  recorded_at: Thu, 25 Apr 2019 06:44:13 GMT
+  recorded_at: Thu, 25 Apr 2019 06:48:37 GMT
 recorded_with: VCR 4.0.0

@@ -7,10 +7,12 @@ describe PdvAuthApi::V1::Auth do
     context 'successful login' do
       before do
         VCR.use_cassette('auth_valid_login') do
-          auth.email = 'test@testmail.dev'
-          auth.password = 'thisisthepassword'
+          VCR.use_cassette('accounts_get_success') do
+            auth.email = 'test@testmail.dev'
+            auth.password = 'thisisthepassword'
 
-          @login_response = auth.login
+            @login_response = auth.login
+          end
         end
       end
 
@@ -20,14 +22,20 @@ describe PdvAuthApi::V1::Auth do
 
       it 'returns a valid token' do
         VCR.use_cassette('auth_login_valid_token') do
-          validity = auth.validate
+          VCR.use_cassette('accounts_get_success') do
+            validity = auth.validate
 
-          expect(validity).to eq(true)
+            expect(validity).to eq(true)
+          end
         end
       end
 
       it 'assigns the token to respective attribute' do
         expect(auth.token).to eq(@login_response)
+      end
+
+      it 'assigns the user to respective attributes' do
+        expect(auth.user.blank?).to eq(false)
       end
     end
 
@@ -59,14 +67,18 @@ describe PdvAuthApi::V1::Auth do
     context 'valid token' do
       before do
         VCR.use_cassette('auth_valid_login') do
-          auth.email = 'test@testmail.dev'
-          auth.password = 'thisisthepassword'
+          VCR.use_cassette('accounts_get_success') do
+            auth.email = 'test@testmail.dev'
+            auth.password = 'thisisthepassword'
 
-          @login_response = auth.login
+            @login_response = auth.login
+          end
         end
 
         VCR.use_cassette('auth_login_valid_token') do
-          @validate_response = auth.validate
+          VCR.use_cassette('accounts_get_success') do
+            @validate_response = auth.validate
+          end
         end
       end
 

@@ -1,23 +1,26 @@
 require 'rails_helper'
 
 describe 'POST api/auth/validate' do
-  let(:token) do
-    email = 'test@testmail.dev'
-    password = 'thisisthepassword'
-
-    VCR.use_cassette('auth_valid_login') do
-      token = PdvAuthApi::V1::Auth.new(email: email, password: password).login
-
-      return token
-    end
-  end
-
   context 'valid token' do
     before do
+      email = 'test@testmail.dev'
+      password = 'thisisthepassword'
+      token = ''
+
+      VCR.use_cassette('auth_valid_login') do
+        VCR.use_cassette('accounts_get_success') do
+          token = PdvAuthApi::V1::Auth.new(
+            email: email, password: password
+          ).login
+        end
+      end
+
       VCR.use_cassette('auth_login_valid_token') do
-        post validate_api_auth_index_url, headers: {
-          'Authorization': "Token #{token}"
-        }, as: :json
+        VCR.use_cassette('accounts_get_success') do
+          post validate_api_auth_index_url, headers: {
+            'Authorization': "Token #{token}"
+          }, as: :json
+        end
       end
     end
 

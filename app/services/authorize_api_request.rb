@@ -1,5 +1,5 @@
 class AuthorizeApiRequest
-  attr_accessor :headers, :token, :errors
+  attr_accessor :headers, :token, :errors, :user
 
   def initialize(**params)
     assign_attributes(params)
@@ -9,6 +9,7 @@ class AuthorizeApiRequest
     auth = PdvAuthApi::V1::Auth.new(token: @token)
 
     if auth.validate
+      @user = auth.user
       true
     else
       @errors = auth.errors

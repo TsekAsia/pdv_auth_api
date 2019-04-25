@@ -10,7 +10,9 @@ describe 'POST api/auth' do
     context 'successful login' do
       before do
         VCR.use_cassette('auth_valid_login') do
-          post api_auth_index_url, params: params, as: :json
+          VCR.use_cassette('accounts_get_success') do
+            post api_auth_index_url, params: params, as: :json
+          end
         end
       end
 
@@ -20,9 +22,13 @@ describe 'POST api/auth' do
 
       it 'returns a valid token' do
         VCR.use_cassette('auth_login_valid_token') do
-          validity = PdvAuthApi::V1::Auth.new(token: json[:auth_token]).validate
+          VCR.use_cassette('accounts_get_success') do
+            validity = PdvAuthApi::V1::Auth.new(
+              token: json[:auth_token]
+            ).validate
 
-          expect(validity).to eq(true)
+            expect(validity).to eq(true)
+          end
         end
       end
     end

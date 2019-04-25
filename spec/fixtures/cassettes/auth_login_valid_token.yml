@@ -12,7 +12,7 @@ http_interactions:
       Api-Key:
       - jsaxYfyeRjrJozbnM9bVOaji2D0MeNjPSwOODqlkApv_dL9d_6Sy2OBaPF8
       Authorization:
-      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTYwOTQ3MTh9._B52LthGFjB6IalavYcXDk4MaTUtZtjPPkBRHESP4sE
+      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTY3Nzk0NTB9.kF0VyQtPNpYZ8B5uLMuAPcq2gkzWA6JtpOwJgQTk8Cs
       User-Agent:
       - Faraday v0.15.4
       Content-Length:
@@ -29,7 +29,7 @@ http_interactions:
       Server:
       - nginx/1.14.0 (Ubuntu)
       Date:
-      - Wed, 24 Apr 2019 06:34:30 GMT
+      - Thu, 25 Apr 2019 06:44:11 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -41,14 +41,63 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 1a0d1fa3-d51d-471d-b827-bfbec8d9f473
+      - e178de5e-762c-44c8-a83b-0573003b35fd
       X-Runtime:
-      - '0.007371'
+      - '0.006022'
       Vary:
       - Origin
     body:
       encoding: UTF-8
       string: '{"message":"Token is valid."}'
     http_version: 
-  recorded_at: Wed, 24 Apr 2019 06:34:30 GMT
+  recorded_at: Thu, 25 Apr 2019 06:44:11 GMT
+- request:
+    method: get
+    uri: http://18.220.104.167/api/v1/account
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Api-Key:
+      - jsaxYfyeRjrJozbnM9bVOaji2D0MeNjPSwOODqlkApv_dL9d_6Sy2OBaPF8
+      Authorization:
+      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTY3Nzk0NTB9.kF0VyQtPNpYZ8B5uLMuAPcq2gkzWA6JtpOwJgQTk8Cs
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.14.0 (Ubuntu)
+      Date:
+      - Thu, 25 Apr 2019 06:44:12 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Etag:
+      - W/"cc356f3189e3ff7b66b898485b2831ca"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - eff74321-4fad-40e3-821e-015723fedf97
+      X-Runtime:
+      - '0.006390'
+      Vary:
+      - Origin
+    body:
+      encoding: UTF-8
+      string: '{"id":1,"first_name":"Tony","middle_name":null,"last_name":"Stark","username":"ironman","email":"test@testmail.dev","created_at":"2019-04-24T01:20:34.487Z","updated_at":"2019-04-25T05:44:27.630Z"}'
+    http_version: 
+  recorded_at: Thu, 25 Apr 2019 06:44:12 GMT
 recorded_with: VCR 4.0.0
