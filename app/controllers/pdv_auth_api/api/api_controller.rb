@@ -8,7 +8,9 @@ module PdvAuthApi
       def authenticate_request
         auth_request = AuthorizeApiRequest.new(headers: request.headers)
 
-        return if auth_request.valid?
+        @current_user = auth_request.user if auth_request.valid?
+
+        return if @current_user
 
         render json: { errors: auth_request.errors }, status: :unauthorized
       end
