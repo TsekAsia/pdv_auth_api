@@ -23,7 +23,7 @@ module PdvAuthApi
         if @response.status == 200
           assign_attributes(body)
           @user = body
-          true
+          self
         else
           @errors = body[:errors]
           false
