@@ -11,7 +11,7 @@ describe 'GET api/companies' do
   before do
     VCR.use_cassette('auth_login_valid_token') do
       VCR.use_cassette('accounts_get_success') do
-        VCR.use_cassette('company_find') do
+        VCR.use_cassette('company_find_updated') do
           get api_company_url('discipline-success'), headers: {
             'Authorization': "Token #{token}"
           }, as: :json
