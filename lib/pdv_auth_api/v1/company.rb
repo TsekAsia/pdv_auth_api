@@ -30,6 +30,35 @@ module PdvAuthApi
         end
       end
 
+      def all
+        @response = authenticated_api.get 'companies'
+
+        body = JSON.parse(@response.body, symbolize_names: true)
+
+        if @response.status == 200
+          body
+        else
+          @errors = body.error
+          false
+        end
+      end
+
+      def find(**params)
+        assign_attributes(params)
+
+        @response = authenticated_api.get "companies/#{slug}"
+        body = JSON.parse(@response.body, symbolize_names: true)
+
+        if @response.status == 200
+          @company = body
+          assign_attributes(body)
+          self
+        else
+          @errors = body.error
+          false
+        end
+      end
+
       private
 
       def authenticated_api

@@ -46,13 +46,17 @@ describe PdvAuthApi::V1::Company do
 
   describe '#all' do
     before do
-      VCR.use_cassette('company_all') do
-        @response = company.all
+      VCR.use_cassette('accounts_get_success') do
+        VCR.use_cassette('company_all') do
+          company.account = PdvAuthApi::V1::Account.new(token: token).fetch
+
+          @response = company.all
+        end
       end
     end
 
     it 'responds with success' do
-      expect(@response.response.status).to eq(200)
+      expect(company.response.status).to eq(200)
     end
 
     it 'fetches an array of companies' do
@@ -68,8 +72,12 @@ describe PdvAuthApi::V1::Company do
 
   describe '#find' do
     before do
-      VCR.use_cassette('company_find') do
-        @response = company.find('zzyzx')
+      VCR.use_cassette('accounts_get_success') do
+        VCR.use_cassette('company_find') do
+          company.account = PdvAuthApi::V1::Account.new(token: token).fetch
+
+          @response = company.find(slug: 'zzyzx')
+        end
       end
     end
 
