@@ -212,6 +212,42 @@ describe PdvAuthApi::V1::Company do
   end
 
   describe '#add_members' do
+    before do
+      @emails = [
+        'thorodinson@asgardianmail.com',
+        'tony@starkindustries.com',
+        'steverogers@aol.com',
+        'brucebanner@culver.edu'
+      ]
+
+      VCR.use_cassette('accounts_get_success') do
+        VCR.use_cassette('company_find') do
+          VCR.use_cassette('company_add_members') do
+            company.account = PdvAuthApi::V1::Account.new(token: token)
+                                                     .fetch
+
+            company.find(slug: 'discipline-success')
+
+            @response = company.members
+          end
+        end
+      end
+    end
+
+    it 'responds with success' do
+      expect(@response.response.status).to eq(200)
+    end
+
+    it 'fetches an array of users' do
+      expect(@response.size).to eq(@emails.size + 1)
+    end
+
+    it 'array has a user hash' do
+      expect(@response.first.keys).to contain_exactly(
+        :id, :first_name, :last_name, :middle_name, :username, :email,
+        :created_at, :updated_at
+      )
+    end
   end
 
   describe '#members' do
