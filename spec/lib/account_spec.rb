@@ -35,29 +35,49 @@ describe PdvAuthApi::V1::Account do
   end
 
   describe '.fetch' do
-    before do
-      VCR.use_cassette('accounts_get_success') do
-        account.fetch
+    context 'valid token' do
+      before do
+        VCR.use_cassette('accounts_get_success') do
+          account.fetch
+        end
+      end
+
+      it 'fetches an account' do
+        expect(account.user.keys).to contain_exactly(
+          :created_at, :email, :first_name, :middle_name, :last_name, :id,
+          :updated_at, :username
+        )
+      end
+
+      it 'assigns account to class.user' do
+        expect(account.user.nil?).to eq(false)
+      end
+
+      it 'fetches account of current user' do
+        expect(account.user[:email]).to eq(email)
+      end
+
+      it 'responds with 200' do
+        expect(account.response.status).to eq(200)
       end
     end
 
-    it 'fetches an account' do
-      expect(account.user.keys).to contain_exactly(
-        :created_at, :email, :first_name, :middle_name, :last_name, :id,
-        :updated_at, :username
-      )
-    end
+    context 'invalid token' do
+      before do
+        VCR.use_cassette('account_get_fail') do
+          account.token = 'wrongtoken'
 
-    it 'assigns account to class.user' do
-      expect(account.user.nil?).to eq(false)
-    end
+          account.fetch
+        end
+      end
 
-    it 'fetches account of current user' do
-      expect(account.user[:email]).to eq(email)
-    end
+      it 'responds with 401' do
+        expect(account.response.status).to eq(401)
+      end
 
-    it 'responds with 200' do
-      expect(account.response.status).to eq(200)
+      it 'assigns errors' do
+        expect(account.errors.empty?).to eq(false)
+      end
     end
   end
 end
