@@ -131,6 +131,27 @@ module PdvAuthApi
         end
       end
 
+      def change_role(**params)
+        params = {
+          membership: {
+            user_id: params[:id],
+            role: params[:role]
+          }
+        }.to_json
+
+        @response = authenticated_api.patch(
+          "companies/#{slug}/change_role", params
+        )
+        body = JSON.parse(@response.body, symbolize_names: true)
+
+        if @response.status == 200
+          body
+        else
+          @errors = body.errors
+          false
+        end
+      end
+
       private
 
       def authenticated_api
