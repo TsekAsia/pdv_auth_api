@@ -103,6 +103,22 @@ module PdvAuthApi
         end
       end
 
+      def add_members(emails)
+        params = { members: { emails: emails } }.to_json
+
+        @response = authenticated_api.post(
+          "companies/#{slug}/add_members", params
+        )
+        body = JSON.parse(@response.body, symbolize_names: true)
+
+        if @response.status == 200
+          body
+        else
+          @errors = body.errors
+          false
+        end
+      end
+
       private
 
       def authenticated_api

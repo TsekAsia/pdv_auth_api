@@ -228,18 +228,18 @@ describe PdvAuthApi::V1::Company do
 
             company.find(slug: 'discipline-success')
 
-            @response = company.members
+            @response = company.add_members(@emails)
           end
         end
       end
     end
 
     it 'responds with success' do
-      expect(@response.response.status).to eq(200)
+      expect(company.response.status).to eq(200)
     end
 
     it 'fetches an array of users' do
-      expect(@response.size).to eq(@emails.size + 1)
+      expect(@response.size).to eq(@emails.size)
     end
 
     it 'array has a user hash' do

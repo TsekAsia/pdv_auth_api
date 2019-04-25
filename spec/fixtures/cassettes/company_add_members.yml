@@ -1,0 +1,101 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://18.220.104.167/api/v1/companies/discipline-success
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Api-Key:
+      - jsaxYfyeRjrJozbnM9bVOaji2D0MeNjPSwOODqlkApv_dL9d_6Sy2OBaPF8
+      Authorization:
+      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTY3Nzk0NTB9.kF0VyQtPNpYZ8B5uLMuAPcq2gkzWA6JtpOwJgQTk8Cs
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.14.0 (Ubuntu)
+      Date:
+      - Thu, 25 Apr 2019 12:51:19 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Etag:
+      - W/"c27bad5c4bbb9e294717760c754a0529"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - a62c2357-a213-462a-8de3-020691179f3d
+      X-Runtime:
+      - '0.010993'
+      Vary:
+      - Origin
+    body:
+      encoding: UTF-8
+      string: '{"name":"Discipline to Success","slug":"discipline-success","created_at":"2019-04-25T11:02:17.835Z"}'
+    http_version: 
+  recorded_at: Thu, 25 Apr 2019 12:51:19 GMT
+- request:
+    method: post
+    uri: http://18.220.104.167/api/v1/companies/discipline-success/add_members
+    body:
+      encoding: UTF-8
+      string: '{"members":{"emails":["thorodinson@asgardianmail.com","tony@starkindustries.com","steverogers@aol.com","brucebanner@culver.edu"]}}'
+    headers:
+      Content-Type:
+      - application/json
+      Api-Key:
+      - jsaxYfyeRjrJozbnM9bVOaji2D0MeNjPSwOODqlkApv_dL9d_6Sy2OBaPF8
+      Authorization:
+      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTY3Nzk0NTB9.kF0VyQtPNpYZ8B5uLMuAPcq2gkzWA6JtpOwJgQTk8Cs
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.14.0 (Ubuntu)
+      Date:
+      - Thu, 25 Apr 2019 12:51:20 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Etag:
+      - W/"3fe7eba664a9fdd3c60d1f6de8fced98"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 4a0979d3-9fab-4a67-b4c7-13b7b9e8f457
+      X-Runtime:
+      - '0.398685'
+      Vary:
+      - Origin
+    body:
+      encoding: UTF-8
+      string: '[{"id":10,"first_name":null,"middle_name":null,"last_name":null,"username":"thorodinsonasgardianmailcom","email":"thorodinson@asgardianmail.com","created_at":"2019-04-25T12:51:20.126Z","updated_at":"2019-04-25T12:51:20.126Z"},{"id":11,"first_name":null,"middle_name":null,"last_name":null,"username":"tonystarkindustriescom","email":"tony@starkindustries.com","created_at":"2019-04-25T12:51:20.215Z","updated_at":"2019-04-25T12:51:20.215Z"},{"id":12,"first_name":null,"middle_name":null,"last_name":null,"username":"steverogersaolcom","email":"steverogers@aol.com","created_at":"2019-04-25T12:51:20.303Z","updated_at":"2019-04-25T12:51:20.303Z"},{"id":13,"first_name":null,"middle_name":null,"last_name":null,"username":"brucebannerculveredu","email":"brucebanner@culver.edu","created_at":"2019-04-25T12:51:20.390Z","updated_at":"2019-04-25T12:51:20.390Z"}]'
+    http_version: 
+  recorded_at: Thu, 25 Apr 2019 12:51:20 GMT
+recorded_with: VCR 4.0.0
