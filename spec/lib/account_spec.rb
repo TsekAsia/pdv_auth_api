@@ -2,17 +2,8 @@ require 'rails_helper'
 
 describe PdvAuthApi::V1::Account do
   let(:email) { 'test@testmail.dev' }
-  let(:token) do
-    password = 'thisisthepassword'
-
-    VCR.use_cassette('auth_valid_login') do
-      token = PdvAuthApi::V1::Auth.new(email: email, password: password).login
-
-      return token
-    end
-  end
-
-  let(:account) { PdvAuthApi::V1::Account.new(token: token) }
+  let(:password) { 'thisisthepassword' }
+  let(:account) { PdvAuthApi::V1::Account.new }
 
   describe '.new' do
     it 'responds to token' do
@@ -37,6 +28,15 @@ describe PdvAuthApi::V1::Account do
   describe '.fetch' do
     context 'valid token' do
       before do
+        token = ''
+
+        VCR.use_cassette('auth_valid_login') do
+          VCR.use_cassette('accounts_get_success') do
+            token = PdvAuthApi::V1::Auth.new(email: email, password: password)
+                                        .login
+          end
+        end
+
         VCR.use_cassette('accounts_get_success') do
           account.fetch
         end
