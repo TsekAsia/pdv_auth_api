@@ -31,15 +31,11 @@ describe PdvAuthApi::V1::Auth do
       end
 
       it 'assigns the token to respective attribute' do
-        expect(auth.token).to eq(@login_response[:token])
+        expect(auth.token).to eq(@login_response)
       end
 
       it 'assigns the user to respective attributes' do
-        expect(auth.user).to eq(@login_response[:user])
-      end
-
-      it 'returns a hash with token and user' do
-        expect(@login_response.keys).to contain_exactly(:user, :token)
+        expect(auth.user.blank?).to eq(false)
       end
     end
 

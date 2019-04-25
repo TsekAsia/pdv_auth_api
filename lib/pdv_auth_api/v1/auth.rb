@@ -1,7 +1,8 @@
 module PdvAuthApi
   module V1
     class Auth
-      attr_accessor :response, :token, :email, :password, :errors, :user
+      attr_accessor :response, :token, :email, :password, :errors, :user,
+                    :user_params
 
       def initialize(**params)
         assign_attributes(params)
@@ -17,9 +18,11 @@ module PdvAuthApi
 
         if @response.status == 200
           @token = body[:auth_token]
-          @user = Account.new(token: @token).fetch
+          @user = Account.new(token: @token)
+          @user.fetch
+          @user_params = body
 
-          { token: @token, user: @user }
+          @token
         else
           @errors = body[:error]
           false
@@ -32,8 +35,9 @@ module PdvAuthApi
         @response = authenticated_api.post 'auth/validate'
 
         if response.status == 200
-          @user = Account.new(token: @token).fetch
-          @user
+          @user = Account.new(token: @token)
+          @user.fetch
+          true
         else
           false
         end
