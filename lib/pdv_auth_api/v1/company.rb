@@ -59,6 +59,26 @@ module PdvAuthApi
         end
       end
 
+      def update(**params)
+        sanitized_params = params.select do |key, _val|
+          EDITABLE_ATTRIBUTES.include?(key)
+        end
+
+        @response = authenticated_api.patch(
+          "companies/#{company[:slug]}", sanitized_params.to_json
+        )
+        body = JSON.parse(@response.body, symbolize_names: true)
+
+        if @response.status == 200
+          @company = body
+          assign_attributes(body)
+          self
+        else
+          @errors = body.errors
+          false
+        end
+      end
+
       private
 
       def authenticated_api
