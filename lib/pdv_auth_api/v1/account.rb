@@ -5,12 +5,13 @@ module PdvAuthApi
 
       def initialize(**params)
         assign_attributes(params)
-
-        fetch if @token
       end
 
-      def fetch
+      def fetch(**params)
+        assign_attributes(params)
+
         @response = authenticated_api.get 'account'
+
         body = JSON.parse(@response.body, symbolize_names: true)
 
         if @response.status == 200
@@ -22,14 +23,14 @@ module PdvAuthApi
         end
       end
 
+      def authenticated_api
+        PdvAuthApi::Connection.new(token: @token).api
+      end
+
       private
 
       def assign_attributes(params)
         @token = params[:token] if params[:token]
-      end
-
-      def authenticated_api
-        PdvAuthApi::Connection.new(token: @token).api
       end
     end
   end
