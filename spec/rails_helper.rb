@@ -26,4 +26,5 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   config.include Request::JsonHelpers, type: :request
+  config.include PdvAuthApi::Engine.routes.url_helpers
 end

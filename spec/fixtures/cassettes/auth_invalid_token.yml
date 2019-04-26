@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://18.220.104.167/api/v1/auth/validate
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Api-Key:
+      - jsaxYfyeRjrJozbnM9bVOaji2D0MeNjPSwOODqlkApv_dL9d_6Sy2OBaPF8
+      Authorization:
+      - Token invalid_token
+      User-Agent:
+      - Faraday v0.15.4
+      Content-Length:
+      - '0'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Server:
+      - nginx/1.14.0 (Ubuntu)
+      Date:
+      - Thu, 25 Apr 2019 06:44:13 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - b969705b-a808-4a4d-8379-43488ba1cccf
+      X-Runtime:
+      - '0.004339'
+      Vary:
+      - Origin
+    body:
+      encoding: UTF-8
+      string: '{"errors":{"token":"Token invalid"}}'
+    http_version: 
+  recorded_at: Thu, 25 Apr 2019 06:44:13 GMT
+recorded_with: VCR 4.0.0
