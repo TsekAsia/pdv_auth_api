@@ -7,6 +7,14 @@ PdvAuthApi::Engine.routes.draw do
     resource :account, only: %i[show update] do
       patch :change_password
     end
-    resources :companies, only: %i[index show]
+    resources :companies, only: %i[index show create update] do
+      member do
+        get :membership
+      end
+
+      resources :members, only: %i[index show] do
+        post :batch, on: :collection
+      end
+    end
   end
 end
