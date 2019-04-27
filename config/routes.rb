@@ -10,10 +10,10 @@ PdvAuthApi::Engine.routes.draw do
     resources :companies, only: %i[index show create update] do
       member do
         get :membership
+      end
 
-        resources :members, only: %i[index] do
-          post :batch, on: :collection
-        end
+      resources :members, only: %i[index show] do
+        post :batch, on: :collection
       end
     end
   end
