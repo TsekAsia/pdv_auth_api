@@ -13,7 +13,7 @@ module PdvAuthApi
 
         return if @current_user
 
-        render json: { errors: auth_request.errors }, status: :unauthorized
+        render json: { errors: 'Login required.' }, status: :unauthorized
       end
 
       def initiate_company
