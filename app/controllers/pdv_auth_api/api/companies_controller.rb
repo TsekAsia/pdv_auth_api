@@ -14,6 +14,14 @@ module PdvAuthApi
 
         render json: company.company, status: :ok
       end
+
+      def create; end
+
+      private
+
+      def create_params
+        params.require(:company).permit(:name, :slug)
+      end
     end
   end
 end
