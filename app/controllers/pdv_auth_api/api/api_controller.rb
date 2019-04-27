@@ -2,6 +2,7 @@ module PdvAuthApi
   module Api
     class ApiController < ApplicationController
       before_action :authenticate_request
+      before_action :initiate_company
 
       private
 
@@ -13,6 +14,12 @@ module PdvAuthApi
         return if @current_user
 
         render json: { errors: auth_request.errors }, status: :unauthorized
+      end
+
+      def initiate_company
+        return unless @current_user
+
+        @company = PdvAuthApi::V1::Company.new(account: @current_user)
       end
     end
   end
