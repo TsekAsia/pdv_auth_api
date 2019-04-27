@@ -1,7 +1,7 @@
 module PdvAuthApi
   module Api
     class CompaniesController < ApiController
-      before_action :set_company, only: %i[show update]
+      before_action :set_company, only: %i[show update membership]
 
       def index
         companies = @company.all
@@ -29,6 +29,10 @@ module PdvAuthApi
           render json: { errors: @company.errors },
                  status: :unprocessable_entity
         end
+      end
+
+      def membership
+        render json: @company.membership, status: :ok
       end
 
       private

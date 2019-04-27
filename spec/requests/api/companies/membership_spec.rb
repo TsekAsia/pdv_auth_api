@@ -13,7 +13,7 @@ describe 'GET api/companies/:id/membership' do
       VCR.use_cassette('accounts_get_success') do
         VCR.use_cassette('company_find') do
           VCR.use_cassette('company_membership') do
-            get membership_api_company_url('zzyzx'), headers: {
+            get membership_api_company_url('discipline-success'), headers: {
               'Authorization': "Token #{token}"
             }, as: :json
           end
