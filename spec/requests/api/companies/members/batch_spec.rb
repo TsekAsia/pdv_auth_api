@@ -40,11 +40,11 @@ describe 'POST api/companies/:id/members/batch' do
     end
 
     it 'returns an array of users' do
-      expect(json[:members].size).to eq(4)
+      expect(json.size).to eq(4)
     end
 
     it 'array has a user hash' do
-      expect(json[:members].first.keys).to contain_exactly(
+      expect(json.first.keys).to contain_exactly(
         :id, :first_name, :last_name, :middle_name, :username, :email,
         :created_at, :updated_at
       )

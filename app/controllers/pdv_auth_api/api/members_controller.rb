@@ -21,7 +21,7 @@ module PdvAuthApi
       private
 
       def set_company
-        @company.find(params[:company_id])
+        @company.find(slug: params[:company_id])
       end
 
       def batch_params
