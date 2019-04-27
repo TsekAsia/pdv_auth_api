@@ -23,7 +23,7 @@ describe 'POST api/companies/:id/members/batch' do
       VCR.use_cassette('accounts_get_success') do
         VCR.use_cassette('company_find') do
           VCR.use_cassette('company_add_members') do
-            post api_company_members_url('discipline-success'),
+            post batch_api_company_members('discipline-success'),
                  params: params,
                  headers: {
                    'Authorization': "Token #{token}"
