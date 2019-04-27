@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'POST api/companies' do
+describe 'PATCH api/companies/:id' do
   let(:token) do
     a = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTY3Nzk0NTB9.'
     b = 'kF0VyQtPNpYZ8B5uLMuAPcq2gkzWA6JtpOwJgQTk8Cs'
