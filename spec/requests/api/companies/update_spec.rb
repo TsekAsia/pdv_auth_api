@@ -8,21 +8,23 @@ describe 'POST api/companies' do
     "#{a}#{b}"
   end
 
-  let(:params) { { name: 'ZZYZX', slug: 'zzyzx' } }
+  let(:params) { { name: 'xzyzz', slug: 'xzyzz' } }
 
   before do
     VCR.use_cassette('auth_login_valid_token') do
       VCR.use_cassette('accounts_get_success') do
-        VCR.use_cassette('company_create') do
-          post api_companies_url, params: params, headers: {
-            'Authorization': "Token #{token}"
-          }, as: :json
+        VCR.use_cassette('company_find') do
+          VCR.use_cassette('company_update') do
+            patch api_company_url('zzyzx'), params: params, headers: {
+              'Authorization': "Token #{token}"
+            }, as: :json
+          end
         end
       end
     end
   end
 
-  describe 'POST create' do
+  describe 'PATCH create' do
     it 'responds with success' do
       expect(response).to have_http_status(:success)
     end
@@ -31,7 +33,7 @@ describe 'POST api/companies' do
       expect(json.keys).to contain_exactly(:created_at, :name, :slug)
     end
 
-    it 'creates a company' do
+    it 'updates the company' do
       expect(json[:name]).to eq(params[:name])
       expect(json[:slug]).to eq(params[:slug])
     end

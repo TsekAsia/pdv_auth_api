@@ -1,6 +1,8 @@
 module PdvAuthApi
   module Api
     class CompaniesController < ApiController
+      before_action :set_company, only: %i[show update]
+
       def index
         companies = @company.all
 
@@ -8,27 +10,35 @@ module PdvAuthApi
       end
 
       def show
-        company = @company.find(slug: params[:id])
-
-        render json: company.company, status: :ok
+        render json: @company.company, status: :ok
       end
 
       def create
-        company_params = create_params.to_hash.symbolize_keys
-
-        company = @company.create(company_params)
-
-        if company
-          render json: company.company, status: :ok
+        if @company.create(company_params)
+          render json: @company.company, status: :ok
         else
-          render json: { errors: company.errors }, status: :unprocessable_entity
+          render json: { errors: @company.errors },
+                 status: :unprocessable_entity
+        end
+      end
+
+      def update
+        if @company.update(company_params)
+          render json: @company.company, status: :ok
+        else
+          render json: { errors: @company.errors },
+                 status: :unprocessable_entity
         end
       end
 
       private
 
-      def create_params
-        params.require(:company).permit(:name, :slug)
+      def company_params
+        params.require(:company).permit(:name, :slug).to_hash.symbolize_keys
+      end
+
+      def set_company
+        @company.find(slug: params[:id])
       end
     end
   end
