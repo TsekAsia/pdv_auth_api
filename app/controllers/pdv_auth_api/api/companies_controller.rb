@@ -1,9 +1,7 @@
 module PdvAuthApi
   module Api
     class CompaniesController < ApiController
-      before_action :set_company, only: %i[
-        show update membership change_role
-      ]
+      before_action :set_company, only: %i[show update membership]
 
       def index
         companies = @company.all
