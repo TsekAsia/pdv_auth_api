@@ -18,6 +18,16 @@ module PdvAuthApi
         end
       end
 
+      def change_role
+        role = @company.change_role(change_role_params)
+
+        if role
+          render json: role, status: :ok
+        else
+          render json: { errors: role.errors }, status: :unprocessable_entity
+        end
+      end
+
       private
 
       def set_company
@@ -26,6 +36,10 @@ module PdvAuthApi
 
       def batch_params
         params.require(:members).permit(emails: []).to_hash.symbolize_keys
+      end
+
+      def change_role_params
+        params.require(:employee).permit(:id, :role).to_hash.symbolize_keys
       end
     end
   end

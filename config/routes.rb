@@ -14,6 +14,7 @@ PdvAuthApi::Engine.routes.draw do
 
       resources :members, only: %i[index show] do
         post :batch, on: :collection
+        post :change_role, on: :collection
       end
     end
   end
