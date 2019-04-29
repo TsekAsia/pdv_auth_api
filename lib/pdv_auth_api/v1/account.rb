@@ -9,6 +9,31 @@ module PdvAuthApi
         first_name middle_name last_name email username
       ].freeze
 
+      class << self
+        attr_accessor :errors
+
+        def find(email)
+          find_params = { email: email }.to_json
+
+          @response = api.post 'account/find', find_params
+          body = JSON.parse(@response.body, symbolize_names: true)
+
+          return nil unless body[:exists]
+
+          new(body[:user])
+        end
+
+        private
+
+        def api
+          PdvAuthApi::Connection.new.api
+        end
+
+        def assign_attributes(params)
+          params.each { |key, attr| send(:"#{key}=", attr) }
+        end
+      end
+
       def initialize(**params)
         assign_attributes(params)
       end
@@ -58,10 +83,6 @@ module PdvAuthApi
         update(new_attrs)
       end
 
-      def authenticated_api
-        PdvAuthApi::Connection.new(token: @token).api
-      end
-
       def change_password(**params)
         change_password_params = {
           user: {
@@ -85,6 +106,10 @@ module PdvAuthApi
       end
 
       private
+
+      def authenticated_api
+        PdvAuthApi::Connection.new(token: @token).api
+      end
 
       def assign_attributes(params)
         params.each { |key, attr| send(:"#{key}=", attr) }

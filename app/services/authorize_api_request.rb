@@ -21,9 +21,9 @@ class AuthorizeApiRequest
 
   def assign_attributes(params)
     @headers = params[:headers]
-    auth_header = @headers['Authorization'].split(' ') if \
-      @headers['authorization'].present?
 
-    @token = auth_header.last
+    return unless @headers['authorization'].present?
+
+    @token = @headers['Authorization'].split(' ').last
   end
 end
