@@ -9,13 +9,15 @@ module PdvAuthApi
         first_name middle_name last_name email username
       ].freeze
 
+      FIND_ATTRIBUTES = %i[id email].freeze
+
       class << self
-        attr_accessor :errors
+        def find(**params)
+          sanitized_params = params.select do |key, _val|
+            FIND_ATTRIBUTES.include?(key)
+          end
 
-        def find(email)
-          find_params = { email: email }.to_json
-
-          @response = api.post 'account/find', find_params
+          @response = api.post 'account/find', sanitized_params.to_json
           body = JSON.parse(@response.body, symbolize_names: true)
 
           return nil unless body[:exists]
