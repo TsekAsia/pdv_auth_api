@@ -219,25 +219,28 @@ describe PdvAuthApi::V1::Account do
 
   describe 'find' do
     context 'account exists' do
-      before do
-        VCR.use_cassette('accounts_find') do
-          @response = PdvAuthApi::V1::Account.find(email)
+      context 'using email' do
+        before do
+          VCR.use_cassette('accounts_find_with_email') do
+            @response = PdvAuthApi::V1::Account.find(email: email)
+          end
         end
-      end
 
-      it 'returns a self' do
-        expect(@response).to be_a(PdvAuthApi::V1::Account)
-      end
+        it 'returns a self' do
+          expect(@response).to be_a(PdvAuthApi::V1::Account)
+        end
 
-      it 'returns an account' do
-        expect(@response.email).to eq(email)
+        it 'returns an account' do
+          expect(@response.email).to eq(email)
+        end
       end
     end
 
     context 'account does not exist' do
       before do
         VCR.use_cassette('accounts_find_fail') do
-          @response = PdvAuthApi::V1::Account.find('somesortofemail@test.dev')
+          params = { email: 'wrongemail@test.dev' }
+          @response = PdvAuthApi::V1::Account.find(params)
         end
       end
 
