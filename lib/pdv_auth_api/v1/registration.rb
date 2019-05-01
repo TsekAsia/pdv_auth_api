@@ -38,8 +38,9 @@ module PdvAuthApi
 
         response = api.post 'registrations', params
         @response = response
+        body = JSON.parse(@response.body, symbolize_names: true)
 
-        @errors = response.body['errors'] || nil
+        @errors = body[:errors] || nil
       end
 
       def api
