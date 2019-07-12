@@ -74,6 +74,10 @@ describe PdvAuthApi::V1::Registration do
       expect(!registration.errors.empty?).to eq(true)
     end
 
+    it 'has error messages' do
+      expect(registration.errors.size).to eq(2)
+    end
+
     it 'object errors should not be nil' do
       expect(registration.errors).not_to eq(nil)
     end
