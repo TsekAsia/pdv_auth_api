@@ -12,7 +12,6 @@ module PdvAuthApi
       assign_attributes(params)
 
       Faraday.new(url: "#{config.auth_api_url}/api/v1") do |faraday|
-        faraday.response :logger
         faraday.adapter Faraday.default_adapter
         faraday.headers['Content-Type'] = 'application/json'
         faraday.headers['Api-Key'] = config.api_key
