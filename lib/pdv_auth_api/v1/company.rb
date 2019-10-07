@@ -2,7 +2,7 @@ module PdvAuthApi
   module V1
     class Company
       attr_accessor :company, :response, :name, :slug, :created_at,
-                    :account, :errors, :membership_hash
+                    :account, :errors, :membership_hash, :disabled_at
 
       EDITABLE_ATTRIBUTES = %i[name slug].freeze
 
