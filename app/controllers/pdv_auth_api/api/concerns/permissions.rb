@@ -15,7 +15,7 @@ module PdvAuthApi
           body = JSON.parse(@response.body, symbolize_names: true)
 
           if @response.status == :ok
-            true
+            self
           else
             @errors = body.errors
 
