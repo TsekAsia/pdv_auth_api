@@ -2,7 +2,7 @@ module PdvAuthApi
   module Api
     module Concerns
       module Permissions
-        def permitted?(role)
+        def permitted(role)
           params = {
             permit: {
               user_id: @current_user.id,
