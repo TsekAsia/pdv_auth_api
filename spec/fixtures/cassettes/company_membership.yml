@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://18.220.104.167/api/v1/companies/discipline-success
+    uri: https://api.staging.tsek.asia/api/v1/companies/discipline-success
     body:
       encoding: US-ASCII
       string: ''
@@ -10,11 +10,11 @@ http_interactions:
       Content-Type:
       - application/json
       Api-Key:
-      - jsaxYfyeRjrJozbnM9bVOaji2D0MeNjPSwOODqlkApv_dL9d_6Sy2OBaPF8
+      - fHqAMXiD_kDc8hs-tv2m_gBxjFxJk1l3KdjAVlTFhY_KRMQGLMld3gf4GdU
       Authorization:
-      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTY3Nzk0NTB9.kF0VyQtPNpYZ8B5uLMuAPcq2gkzWA6JtpOwJgQTk8Cs
+      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0MTksImV4cCI6MTYwMzMzMzczNH0.O2aa8KBvwRkQ-Zi84P7rkt9_0lm7gZnX_XWghmE7ZaQ
       User-Agent:
-      - Faraday v0.15.4
+      - Faraday v0.17.0
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -27,7 +27,7 @@ http_interactions:
       Server:
       - nginx/1.14.0 (Ubuntu)
       Date:
-      - Thu, 25 Apr 2019 12:22:15 GMT
+      - Tue, 22 Oct 2019 04:22:11 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -35,23 +35,23 @@ http_interactions:
       Connection:
       - keep-alive
       Etag:
-      - W/"c27bad5c4bbb9e294717760c754a0529"
+      - W/"56ad03b41090e5778248dd92488e56e0"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - acb0e788-1c31-4a07-a1ec-b0e3a9e74090
+      - 0d67a31a-f2cd-4135-9e99-4e805541543d
       X-Runtime:
-      - '0.008820'
+      - '0.006198'
       Vary:
       - Origin
     body:
       encoding: UTF-8
-      string: '{"name":"Discipline to Success","slug":"discipline-success","created_at":"2019-04-25T11:02:17.835Z"}'
+      string: '{"name":"Discipline to Success","slug":"discipline-success","created_at":"2019-10-22T02:53:05.817Z","disabled_at":null}'
     http_version: 
-  recorded_at: Thu, 25 Apr 2019 12:22:15 GMT
+  recorded_at: Tue, 22 Oct 2019 04:22:12 GMT
 - request:
     method: get
-    uri: http://18.220.104.167/api/v1/companies/discipline-success/my_membership
+    uri: https://api.staging.tsek.asia/api/v1/companies/discipline-success/my_membership
     body:
       encoding: US-ASCII
       string: ''
@@ -59,11 +59,11 @@ http_interactions:
       Content-Type:
       - application/json
       Api-Key:
-      - jsaxYfyeRjrJozbnM9bVOaji2D0MeNjPSwOODqlkApv_dL9d_6Sy2OBaPF8
+      - fHqAMXiD_kDc8hs-tv2m_gBxjFxJk1l3KdjAVlTFhY_KRMQGLMld3gf4GdU
       Authorization:
-      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTY3Nzk0NTB9.kF0VyQtPNpYZ8B5uLMuAPcq2gkzWA6JtpOwJgQTk8Cs
+      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0MTksImV4cCI6MTYwMzMzMzczNH0.O2aa8KBvwRkQ-Zi84P7rkt9_0lm7gZnX_XWghmE7ZaQ
       User-Agent:
-      - Faraday v0.15.4
+      - Faraday v0.17.0
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -76,7 +76,7 @@ http_interactions:
       Server:
       - nginx/1.14.0 (Ubuntu)
       Date:
-      - Thu, 25 Apr 2019 12:22:15 GMT
+      - Tue, 22 Oct 2019 04:22:13 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -84,18 +84,18 @@ http_interactions:
       Connection:
       - keep-alive
       Etag:
-      - W/"a974f274a7fd3b710b69e6644d85276d"
+      - W/"632d49f9f2b1f34142cb3007de8876e5"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 4ce61a7b-0222-498b-bcaa-780b918fbced
+      - 5bee8521-4052-44f6-8dcf-6d21bffcc7d0
       X-Runtime:
-      - '0.013060'
+      - '0.008388'
       Vary:
       - Origin
     body:
       encoding: UTF-8
-      string: '{"company":{"name":"Discipline to Success","slug":"discipline-success","created_at":"2019-04-25T11:02:17.835Z"},"user":{"id":1,"first_name":"Thor","middle_name":null,"last_name":"Odinson","username":"therealgodofthunder","email":"test@testmail.dev","created_at":"2019-04-24T01:20:34.487Z","updated_at":"2019-04-25T07:05:19.680Z"},"created_at":"2019-04-25T11:02:17.844Z","role":"administrator"}'
+      string: '{"company":{"name":"Discipline to Success","slug":"discipline-success","created_at":"2019-10-22T02:53:05.817Z","disabled_at":null},"user":{"id":419,"first_name":"Thor","middle_name":null,"last_name":"Odinson","username":"therealgodofthunder","email":"test@testmail.dev","created_at":"2019-10-22T01:43:58.577Z","updated_at":"2019-10-22T03:08:39.413Z","disabled_at":null,"membership":null,"role":"member","require_password_reset":true},"created_at":"2019-10-22T02:53:05.826Z","role":"administrator"}'
     http_version: 
-  recorded_at: Thu, 25 Apr 2019 12:22:15 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Tue, 22 Oct 2019 04:22:13 GMT
+recorded_with: VCR 5.0.0
