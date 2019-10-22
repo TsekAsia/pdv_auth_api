@@ -15,7 +15,7 @@ describe 'PATCH api/companies/:id' do
       VCR.use_cassette('accounts_get_success') do
         VCR.use_cassette('company_find') do
           VCR.use_cassette('company_update') do
-            patch api_company_url('zzyzx'), params: params, headers: {
+            patch api_company_url('xzyzz'), params: params, headers: {
               'Authorization': "Token #{token}"
             }, as: :json
           end

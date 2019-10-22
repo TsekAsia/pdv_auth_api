@@ -8,7 +8,7 @@ describe 'POST api/companies/:company_id/members/change_role' do
     "#{a}#{b}"
   end
 
-  let(:params) { { employee: { id: 13, role: 'administrator' } } }
+  let(:params) { { employee: { id: 419, role: 'administrator' } } }
 
   describe 'POST change_role' do
     before do
@@ -16,7 +16,7 @@ describe 'POST api/companies/:company_id/members/change_role' do
         VCR.use_cassette('accounts_get_success') do
           VCR.use_cassette('company_find') do
             VCR.use_cassette('company_change_roles') do
-              post change_role_api_company_members_url('discipline-success'),
+              post change_role_api_company_members_url('zzyzx'),
                    params: params,
                    headers: {
                      'Authorization': "Token #{token}"

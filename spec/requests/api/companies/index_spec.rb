@@ -26,7 +26,7 @@ describe 'GET api/companies' do
     end
 
     it 'returns an array of companies' do
-      expect(json.size).to eq(1)
+      expect(json.size).to eq(2)
     end
 
     it 'returns a company hash' do

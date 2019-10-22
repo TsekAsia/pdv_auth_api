@@ -46,7 +46,8 @@ describe 'POST api/companies/:id/members/batch' do
     it 'array has a user hash' do
       expect(json.first.keys).to contain_exactly(
         :id, :first_name, :last_name, :middle_name, :username, :email,
-        :created_at, :updated_at
+        :created_at, :updated_at, :disabled_at, :membership,
+        :require_password_reset, :role
       )
     end
   end
