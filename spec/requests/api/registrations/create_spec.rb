@@ -28,7 +28,8 @@ describe 'POST api/registrations' do
       it 'returns a user object' do
         expect(json.keys).to contain_exactly(
           :id, :first_name, :middle_name, :last_name, :username,
-          :email, :created_at, :updated_at
+          :email, :created_at, :updated_at, :disabled_at, :membership,
+          :require_password_reset, :role
         )
       end
     end

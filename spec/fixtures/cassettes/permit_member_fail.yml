@@ -2,15 +2,17 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.staging.tsek.asia/api/v1/registrations
+    uri: https://api.staging.tsek.asia/api/v1/permits
     body:
       encoding: UTF-8
-      string: '{"user":{"email":"notanemail","password":"thisisthepassword","password_confirmation":"thisisNOTthepassword"}}'
+      string: '{"permit":{"user_id":419,"role":"super_admin"}}'
     headers:
       Content-Type:
       - application/json
       Api-Key:
       - fHqAMXiD_kDc8hs-tv2m_gBxjFxJk1l3KdjAVlTFhY_KRMQGLMld3gf4GdU
+      Authorization:
+      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0MTksImV4cCI6MTYwMzMzMzczNH0.O2aa8KBvwRkQ-Zi84P7rkt9_0lm7gZnX_XWghmE7ZaQ
       User-Agent:
       - Faraday v0.17.0
       Accept-Encoding:
@@ -19,13 +21,13 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 400
-      message: Bad Request
+      code: 401
+      message: Unauthorized
     headers:
       Server:
       - nginx/1.14.0 (Ubuntu)
       Date:
-      - Tue, 22 Oct 2019 02:43:32 GMT
+      - Tue, 22 Oct 2019 06:12:26 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -35,15 +37,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 5d35b3bb-6046-4757-bc1a-437c17d43203
+      - 56296599-21cc-4b7d-9736-2453406921d8
       X-Runtime:
-      - '0.085121'
+      - '0.005515'
       Vary:
       - Origin
     body:
       encoding: UTF-8
-      string: '{"errors":{"password_confirmation":["doesn''t match Password"],"email":["is
-        invalid"]}}'
+      string: '{"errors":["User is not permitted."]}'
     http_version: 
-  recorded_at: Tue, 22 Oct 2019 02:43:32 GMT
+  recorded_at: Tue, 22 Oct 2019 06:12:26 GMT
 recorded_with: VCR 5.0.0

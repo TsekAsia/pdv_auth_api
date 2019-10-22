@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe 'POST api/companies' do
   let(:token) do
-    a = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTY3Nzk0NTB9.'
-    b = 'kF0VyQtPNpYZ8B5uLMuAPcq2gkzWA6JtpOwJgQTk8Cs'
+    a = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0MTksImV4cCI6MTYwMzMzMzczNH0.'
+    b = 'O2aa8KBvwRkQ-Zi84P7rkt9_0lm7gZnX_XWghmE7ZaQ'
 
     "#{a}#{b}"
   end
@@ -28,7 +28,9 @@ describe 'POST api/companies' do
     end
 
     it 'returns a company object' do
-      expect(json.keys).to contain_exactly(:created_at, :name, :slug)
+      expect(json.keys).to contain_exactly(
+        :created_at, :name, :slug, :disabled_at
+      )
     end
 
     it 'creates a company' do

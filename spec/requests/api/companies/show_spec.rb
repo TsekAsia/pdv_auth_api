@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe 'GET api/companies' do
   let(:token) do
-    a = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTY3Nzk0NTB9.'
-    b = 'kF0VyQtPNpYZ8B5uLMuAPcq2gkzWA6JtpOwJgQTk8Cs'
+    a = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0MTksImV4cCI6MTYwMzMzMzczNH0.'
+    b = 'O2aa8KBvwRkQ-Zi84P7rkt9_0lm7gZnX_XWghmE7ZaQ'
 
     "#{a}#{b}"
   end
@@ -27,7 +27,7 @@ describe 'GET api/companies' do
 
     it 'returns a company hash' do
       expect(json.keys).to contain_exactly(
-        :name, :slug, :created_at
+        :name, :slug, :created_at, :disabled_at
       )
     end
   end

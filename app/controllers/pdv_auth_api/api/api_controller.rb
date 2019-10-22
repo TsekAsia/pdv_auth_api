@@ -1,6 +1,8 @@
 module PdvAuthApi
   module Api
     class ApiController < ApplicationController
+      include PdvAuthApi::Api::Concerns::Permissions
+
       before_action :authenticate_request
       before_action :initiate_company
 

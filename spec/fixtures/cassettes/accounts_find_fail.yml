@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://18.220.104.167/api/v1/account/find
+    uri: https://api.staging.tsek.asia/api/v1/account/find
     body:
       encoding: UTF-8
       string: '{"email":"wrongemail@test.dev"}'
@@ -10,9 +10,9 @@ http_interactions:
       Content-Type:
       - application/json
       Api-Key:
-      - jsaxYfyeRjrJozbnM9bVOaji2D0MeNjPSwOODqlkApv_dL9d_6Sy2OBaPF8
+      - fHqAMXiD_kDc8hs-tv2m_gBxjFxJk1l3KdjAVlTFhY_KRMQGLMld3gf4GdU
       User-Agent:
-      - Faraday v0.15.4
+      - Faraday v0.17.0
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - nginx/1.14.0 (Ubuntu)
       Date:
-      - Tue, 30 Apr 2019 02:43:46 GMT
+      - Tue, 22 Oct 2019 03:07:58 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -37,14 +37,14 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - a12638b8-ff89-49d8-8d36-6fe50a5229e0
+      - 5f3a5e96-283b-42e7-9471-3189189c82f9
       X-Runtime:
-      - '0.006258'
+      - '0.004974'
       Vary:
       - Origin
     body:
       encoding: UTF-8
       string: '{"exists":false}'
     http_version: 
-  recorded_at: Tue, 30 Apr 2019 02:43:46 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Tue, 22 Oct 2019 03:07:58 GMT
+recorded_with: VCR 5.0.0

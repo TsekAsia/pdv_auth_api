@@ -5,7 +5,7 @@ module PdvAuthApi
     def initialize
       @api_key = nil
       @server_env = 'sandbox'
-      @auth_api_url = 'http://18.220.104.167'
+      @auth_api_url = 'https://api.staging.tsek.asia'
     end
   end
 end

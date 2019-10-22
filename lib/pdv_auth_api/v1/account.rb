@@ -108,6 +108,27 @@ module PdvAuthApi
         end
       end
 
+      def permit?(**params)
+        current_user = params[:current_user]
+        permit_params = {
+          permit: {
+            user_id: current_user.id,
+            role: params[:role]
+          }
+        }.to_json
+
+        @response = authenticated_api.post 'permits', permit_params
+
+        body = JSON.parse(@response.body, symbolize_names: true)
+
+        if @response.status == 200
+          true
+        else
+          @errors = body[:errors]
+          false
+        end
+      end
+
       private
 
       def authenticated_api

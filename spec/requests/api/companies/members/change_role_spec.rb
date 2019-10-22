@@ -2,13 +2,13 @@ require 'rails_helper'
 
 describe 'POST api/companies/:company_id/members/change_role' do
   let(:token) do
-    a = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTY3Nzk0NTB9.'
-    b = 'kF0VyQtPNpYZ8B5uLMuAPcq2gkzWA6JtpOwJgQTk8Cs'
+    a = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0MTksImV4cCI6MTYwMzMzMzczNH0.'
+    b = 'O2aa8KBvwRkQ-Zi84P7rkt9_0lm7gZnX_XWghmE7ZaQ'
 
     "#{a}#{b}"
   end
 
-  let(:params) { { employee: { id: 13, role: 'administrator' } } }
+  let(:params) { { employee: { id: 419, role: 'administrator' } } }
 
   describe 'POST change_role' do
     before do
@@ -16,7 +16,7 @@ describe 'POST api/companies/:company_id/members/change_role' do
         VCR.use_cassette('accounts_get_success') do
           VCR.use_cassette('company_find') do
             VCR.use_cassette('company_change_roles') do
-              post change_role_api_company_members_url('discipline-success'),
+              post change_role_api_company_members_url('zzyzx'),
                    params: params,
                    headers: {
                      'Authorization': "Token #{token}"

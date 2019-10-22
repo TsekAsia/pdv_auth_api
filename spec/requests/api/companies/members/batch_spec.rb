@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe 'POST api/companies/:id/members/batch' do
   let(:token) do
-    a = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTY3Nzk0NTB9.'
-    b = 'kF0VyQtPNpYZ8B5uLMuAPcq2gkzWA6JtpOwJgQTk8Cs'
+    a = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0MTksImV4cCI6MTYwMzMzMzczNH0.'
+    b = 'O2aa8KBvwRkQ-Zi84P7rkt9_0lm7gZnX_XWghmE7ZaQ'
 
     "#{a}#{b}"
   end
@@ -46,7 +46,8 @@ describe 'POST api/companies/:id/members/batch' do
     it 'array has a user hash' do
       expect(json.first.keys).to contain_exactly(
         :id, :first_name, :last_name, :middle_name, :username, :email,
-        :created_at, :updated_at
+        :created_at, :updated_at, :disabled_at, :membership,
+        :require_password_reset, :role
       )
     end
   end

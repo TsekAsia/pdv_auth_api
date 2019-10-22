@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: patch
-    uri: http://18.220.104.167/api/v1/account
+    uri: https://api.staging.tsek.asia/api/v1/account
     body:
       encoding: UTF-8
       string: '{"user":{"first_name":"Thor","last_name":"Odinson","username":"therealgodofthunder"}}'
@@ -10,11 +10,11 @@ http_interactions:
       Content-Type:
       - application/json
       Api-Key:
-      - jsaxYfyeRjrJozbnM9bVOaji2D0MeNjPSwOODqlkApv_dL9d_6Sy2OBaPF8
+      - fHqAMXiD_kDc8hs-tv2m_gBxjFxJk1l3KdjAVlTFhY_KRMQGLMld3gf4GdU
       Authorization:
-      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTY3Nzk0NTB9.kF0VyQtPNpYZ8B5uLMuAPcq2gkzWA6JtpOwJgQTk8Cs
+      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0MTksImV4cCI6MTYwMzMzMzY1MH0.XFOq42FwWqIg7KoZqd40YVGxYc_pZ6aS_7EjX7XEjZU
       User-Agent:
-      - Faraday v0.15.4
+      - Faraday v0.17.0
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -27,7 +27,7 @@ http_interactions:
       Server:
       - nginx/1.14.0 (Ubuntu)
       Date:
-      - Thu, 25 Apr 2019 06:53:52 GMT
+      - Tue, 22 Oct 2019 03:07:57 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -35,18 +35,18 @@ http_interactions:
       Connection:
       - keep-alive
       Etag:
-      - W/"d7009bb25b6fbe54fa09502597101c07"
+      - W/"735debe5e478380f2e1db887b9a08a95"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 7c781767-9150-4609-896b-830f1aa7fd43
+      - e41ed731-9ca6-4a89-88e0-f622a740989b
       X-Runtime:
-      - '0.018598'
+      - '0.011286'
       Vary:
       - Origin
     body:
       encoding: UTF-8
-      string: '{"id":1,"first_name":"Thor","middle_name":null,"last_name":"Odinson","username":"therealgodofthunder","email":"test@testmail.dev","created_at":"2019-04-24T01:20:34.487Z","updated_at":"2019-04-25T06:53:52.877Z"}'
+      string: '{"id":419,"first_name":"Thor","middle_name":null,"last_name":"Odinson","username":"therealgodofthunder","email":"test@testmail.dev","created_at":"2019-10-22T01:43:58.577Z","updated_at":"2019-10-22T03:07:57.133Z","disabled_at":null,"membership":null,"role":"member","require_password_reset":true}'
     http_version: 
-  recorded_at: Thu, 25 Apr 2019 06:53:53 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Tue, 22 Oct 2019 03:07:57 GMT
+recorded_with: VCR 5.0.0
