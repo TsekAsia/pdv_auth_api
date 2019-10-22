@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.staging.tsek.asia/api/v1/permits
+    body:
+      encoding: UTF-8
+      string: '{"permit":{"user_id":419,"role":"member"}}'
+    headers:
+      Content-Type:
+      - application/json
+      Api-Key:
+      - fHqAMXiD_kDc8hs-tv2m_gBxjFxJk1l3KdjAVlTFhY_KRMQGLMld3gf4GdU
+      Authorization:
+      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0MTksImV4cCI6MTYwMzMzMzczNH0.O2aa8KBvwRkQ-Zi84P7rkt9_0lm7gZnX_XWghmE7ZaQ
+      User-Agent:
+      - Faraday v0.17.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.14.0 (Ubuntu)
+      Date:
+      - Tue, 22 Oct 2019 06:07:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Etag:
+      - W/"9c0a7a7de199c8dabc34d2d08c08fe0f"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - efb49748-6031-4cf9-b644-dfef59fc5db6
+      X-Runtime:
+      - '0.005019'
+      Vary:
+      - Origin
+    body:
+      encoding: UTF-8
+      string: '{"message":"User is permitted."}'
+    http_version: 
+  recorded_at: Tue, 22 Oct 2019 06:07:36 GMT
+recorded_with: VCR 5.0.0
