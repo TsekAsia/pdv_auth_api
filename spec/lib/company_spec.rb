@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe PdvAuthApi::V1::Company do
   let(:token) do
-    a = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTY3Nzk0NTB9.'
-    b = 'kF0VyQtPNpYZ8B5uLMuAPcq2gkzWA6JtpOwJgQTk8Cs'
+    a = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0MTksImV4cCI6MTYwMzMzMzczNH0.'
+    b = 'O2aa8KBvwRkQ-Zi84P7rkt9_0lm7gZnX_XWghmE7ZaQ'
 
     "#{a}#{b}"
   end
@@ -29,7 +29,7 @@ describe PdvAuthApi::V1::Company do
 
     it 'assigns a company hash' do
       expect(@response.company.keys).to contain_exactly(
-        :name, :slug, :created_at
+        :name, :slug, :created_at, :disabled_at
       )
     end
 
@@ -60,12 +60,12 @@ describe PdvAuthApi::V1::Company do
     end
 
     it 'fetches an array of companies' do
-      expect(@response.size).to eq(1)
+      expect(@response.size).to eq(2)
     end
 
     it 'returns a company hash in array' do
       expect(@response.first.keys).to contain_exactly(
-        :name, :slug, :created_at
+        :name, :slug, :created_at, :disabled_at
       )
     end
   end
@@ -91,7 +91,7 @@ describe PdvAuthApi::V1::Company do
 
     it 'assigns a company hash' do
       expect(@response.company.keys).to contain_exactly(
-        :name, :slug, :created_at
+        :name, :slug, :created_at, :disabled_at
       )
     end
 
@@ -115,7 +115,7 @@ describe PdvAuthApi::V1::Company do
             company.account = PdvAuthApi::V1::Account.new(token: token)
                                                      .fetch
 
-            company.find(slug: 'zzyzx')
+            company.find(slug: 'xzyzz')
 
             @response = company.update(@update_params)
           end
@@ -133,7 +133,7 @@ describe PdvAuthApi::V1::Company do
 
     it 'assigns a company hash' do
       expect(@response.company.keys).to contain_exactly(
-        :name, :slug, :created_at
+        :name, :slug, :created_at, :disabled_at
       )
     end
 
@@ -173,7 +173,7 @@ describe PdvAuthApi::V1::Company do
 
     it 'assigns a company hash' do
       expect(@response.company.keys).to contain_exactly(
-        :name, :slug, :created_at
+        :name, :slug, :created_at, :disabled_at
       )
     end
 
@@ -245,7 +245,8 @@ describe PdvAuthApi::V1::Company do
     it 'array has a user hash' do
       expect(@response.first.keys).to contain_exactly(
         :id, :first_name, :last_name, :middle_name, :username, :email,
-        :created_at, :updated_at
+        :created_at, :updated_at, :disabled_at, :membership,
+        :require_password_reset, :role
       )
     end
   end
@@ -277,7 +278,8 @@ describe PdvAuthApi::V1::Company do
     it 'array has a user hash' do
       expect(@response.first.keys).to contain_exactly(
         :id, :first_name, :last_name, :middle_name, :username, :email,
-        :created_at, :updated_at
+        :created_at, :updated_at, :disabled_at, :membership,
+        :require_password_reset, :role
       )
     end
   end
@@ -285,7 +287,7 @@ describe PdvAuthApi::V1::Company do
   describe '#change_role' do
     before do
       @change_role_params = {
-        id: 13,
+        id: 419,
         role: 'administrator'
       }
 
@@ -295,7 +297,7 @@ describe PdvAuthApi::V1::Company do
             company.account = PdvAuthApi::V1::Account.new(token: token)
                                                      .fetch
 
-            company.find(slug: 'discipline-success')
+            company.find(slug: 'zzyzx')
 
             @response = company.change_role(@change_role_params)
           end
