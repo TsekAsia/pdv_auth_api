@@ -34,7 +34,8 @@ describe 'GET api/account' do
     it 'returns a user object' do
       expect(json.keys).to contain_exactly(
         :id, :username, :first_name, :last_name, :middle_name, :email,
-        :created_at, :updated_at
+        :created_at, :updated_at, :disabled_at, :membership,
+        :require_password_reset, :role
       )
     end
 
