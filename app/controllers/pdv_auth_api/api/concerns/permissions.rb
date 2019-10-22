@@ -3,21 +3,10 @@ module PdvAuthApi
     module Concerns
       module Permissions
         def permitted(role)
-          params = {
-            permit: {
-              user_id: @current_user.id,
-              role: role
-            }
-          }.to_json
-
-          @response = authenticated_api.post('permits', params)
-
-          body = JSON.parse(@response.body, symbolize_names: true)
-
-          if @response.status == :ok
+          if @current_user.permit?(role: role, current_user: @current_user)
             self
           else
-            @errors = body.errors
+            @errors = @current_user.errors
 
             render json: { errors: @errors }, status: :unauthorized
           end
