@@ -44,7 +44,8 @@ describe PdvAuthApi::V1::Account do
       it 'fetches an account' do
         expect(account.user.keys).to contain_exactly(
           :created_at, :email, :first_name, :middle_name, :last_name, :id,
-          :updated_at, :username
+          :updated_at, :username, :disabled_at, :membership,
+          :require_password_reset, :role
         )
       end
 
