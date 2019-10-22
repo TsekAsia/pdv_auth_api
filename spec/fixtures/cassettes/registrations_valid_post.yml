@@ -2,17 +2,17 @@
 http_interactions:
 - request:
     method: post
-    uri: http://18.220.104.167/api/v1/registrations
+    uri: https://api.staging.tsek.asia/api/v1/registrations
     body:
       encoding: UTF-8
-      string: '{"user":{"email":"test@testmail.dev","password":"thisisthepassword","password_confirmation":"thisisthepassword"}}'
+      string: '{"user":{"email":"test@test.dev","password":"thisisthepassword","password_confirmation":"thisisthepassword"}}'
     headers:
       Content-Type:
       - application/json
       Api-Key:
-      - jsaxYfyeRjrJozbnM9bVOaji2D0MeNjPSwOODqlkApv_dL9d_6Sy2OBaPF8
+      - fHqAMXiD_kDc8hs-tv2m_gBxjFxJk1l3KdjAVlTFhY_KRMQGLMld3gf4GdU
       User-Agent:
-      - Faraday v0.15.4
+      - Faraday v0.17.0
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - nginx/1.14.0 (Ubuntu)
       Date:
-      - Wed, 24 Apr 2019 01:20:34 GMT
+      - Tue, 22 Oct 2019 02:43:31 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -33,18 +33,18 @@ http_interactions:
       Connection:
       - keep-alive
       Etag:
-      - W/"e1d2153eaa645c2a76ce2c8e1f118f33"
+      - W/"32303c4e1bd01dc9d41a8fc2d0f25b35"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - b5850540-de4f-49b8-9a8d-90fc18231889
+      - 1e932d78-6358-4f87-a998-47326f25dc15
       X-Runtime:
-      - '0.092738'
+      - '0.092047'
       Vary:
       - Origin
     body:
       encoding: UTF-8
-      string: '{"id":1,"first_name":null,"middle_name":null,"last_name":null,"username":"","email":"test@testmail.dev","created_at":"2019-04-24T01:20:34.487Z","updated_at":"2019-04-24T01:20:34.487Z"}'
+      string: '{"id":420,"first_name":null,"middle_name":null,"last_name":null,"username":"e5a4d28f-47be-4082-bd39-019b562b3be2","email":"test@test.dev","created_at":"2019-10-22T02:43:31.469Z","updated_at":"2019-10-22T02:43:31.469Z","disabled_at":null,"membership":null,"role":"member","require_password_reset":true}'
     http_version: 
-  recorded_at: Wed, 24 Apr 2019 01:20:34 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Tue, 22 Oct 2019 02:43:31 GMT
+recorded_with: VCR 5.0.0

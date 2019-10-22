@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://18.220.104.167/api/v1/registrations
+    uri: https://api.staging.tsek.asia/api/v1/registrations
     body:
       encoding: UTF-8
       string: '{"user":{"email":"notanemail","password":"thisisthepassword","password_confirmation":"thisisNOTthepassword"}}'
@@ -10,9 +10,9 @@ http_interactions:
       Content-Type:
       - application/json
       Api-Key:
-      - jsaxYfyeRjrJozbnM9bVOaji2D0MeNjPSwOODqlkApv_dL9d_6Sy2OBaPF8
+      - fHqAMXiD_kDc8hs-tv2m_gBxjFxJk1l3KdjAVlTFhY_KRMQGLMld3gf4GdU
       User-Agent:
-      - Faraday v0.15.4
+      - Faraday v0.17.0
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - nginx/1.14.0 (Ubuntu)
       Date:
-      - Wed, 24 Apr 2019 01:40:08 GMT
+      - Tue, 22 Oct 2019 02:43:32 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -35,15 +35,15 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 24cdb424-9b94-48c4-9325-3d9e7250a49c
+      - 5d35b3bb-6046-4757-bc1a-437c17d43203
       X-Runtime:
-      - '0.133523'
+      - '0.085121'
       Vary:
       - Origin
     body:
       encoding: UTF-8
-      string: '{"errors":["Password confirmation doesn''t match Password","Email is
-        invalid"]}'
+      string: '{"errors":{"password_confirmation":["doesn''t match Password"],"email":["is
+        invalid"]}}'
     http_version: 
-  recorded_at: Wed, 24 Apr 2019 01:40:08 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Tue, 22 Oct 2019 02:43:32 GMT
+recorded_with: VCR 5.0.0
