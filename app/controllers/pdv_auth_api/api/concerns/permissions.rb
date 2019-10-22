@@ -11,12 +11,6 @@ module PdvAuthApi
             render json: { errors: @errors }, status: :unauthorized
           end
         end
-
-        private
-
-        def authenticated_api
-          PdvAuthApi::Connection.new(token: @token).api
-        end
       end
     end
   end
