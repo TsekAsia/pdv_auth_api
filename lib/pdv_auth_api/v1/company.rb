@@ -31,7 +31,11 @@ module PdvAuthApi
       end
 
       def all
-        @response = authenticated_api.get 'companies'
+        if account.role == 'super_admin'
+          @response = authenticated_api.get 'admin/companies'
+        else
+          @response = authenticated_api.get 'companies'
+        end
 
         body = JSON.parse(@response.body, symbolize_names: true)
 
