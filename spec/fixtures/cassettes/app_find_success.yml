@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.staging.tsek.asia/api/v1/apps/1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Api-Key:
+      - fHqAMXiD_kDc8hs-tv2m_gBxjFxJk1l3KdjAVlTFhY_KRMQGLMld3gf4GdU
+      User-Agent:
+      - Faraday v0.17.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.14.0 (Ubuntu)
+      Date:
+      - Thu, 31 Oct 2019 07:55:04 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Etag:
+      - W/"b36df3f960193f1f1c75e5d172f680ab"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 28ad9bc4-c158-4031-a84a-c74e0e73f274
+      X-Runtime:
+      - '0.004214'
+      Vary:
+      - Origin
+    body:
+      encoding: UTF-8
+      string: '{"id":1,"name":"Tseklis Payroll"}'
+    http_version: 
+  recorded_at: Thu, 31 Oct 2019 07:55:04 GMT
+recorded_with: VCR 5.0.0
