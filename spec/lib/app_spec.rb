@@ -7,10 +7,10 @@ describe PdvAuthApi::V1::App do
   let(:app_id) { 1 }
 
   describe 'find' do
-    it 'finds the app' do
+    before do
       VCR.use_cassette('auth_login_valid_login') do
         VCR.use_cassette('app_find_success') do
-          app = PdvAuthApi::V1::App.find(id: app_id)
+          PdvAuthApi::V1::App.find(id: app_id)
         end
       end
     end
