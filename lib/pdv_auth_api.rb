@@ -6,6 +6,7 @@ require 'pdv_auth_api/v1/auth'
 require 'pdv_auth_api/v1/registration'
 require 'pdv_auth_api/v1/account'
 require 'pdv_auth_api/v1/company'
+require 'pdv_auth_api/v1/app'
 
 module PdvAuthApi
   class << self
