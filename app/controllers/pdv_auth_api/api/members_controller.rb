@@ -13,7 +13,7 @@ module PdvAuthApi
         if members
           render json: members, status: :ok
         else
-          render json: { errors: @company.erorrs },
+          render json: { errors: @company.errors },
                  status: :unprocessable_entity
         end
       end
