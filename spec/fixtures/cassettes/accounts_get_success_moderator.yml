@@ -1,0 +1,100 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.staging.tsek.asia/api/v1/auth
+    body:
+      encoding: UTF-8
+      string: '{"auth":{"email":"richard@fullsuite.ph","password":"RichardPassword"}}'
+    headers:
+      Content-Type:
+      - application/json
+      Api-Key:
+      - fHqAMXiD_kDc8hs-tv2m_gBxjFxJk1l3KdjAVlTFhY_KRMQGLMld3gf4GdU
+      User-Agent:
+      - Faraday v0.17.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.14.0 (Ubuntu)
+      Date:
+      - Mon, 04 Nov 2019 09:07:01 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Etag:
+      - W/"746357fbde5b39e92781006d517ffaca"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - a0c24f60-1bd1-4199-931c-0f3ae9e210d3
+      X-Runtime:
+      - '0.080642'
+      Vary:
+      - Origin
+    body:
+      encoding: UTF-8
+      string: '{"auth_token":"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozNDgsImV4cCI6MTYwNDQ4MDgyMX0.x95PFnTdRf9YWqgjICYaZbBAZhrYT1TCH4tMsHlNXJU"}'
+    http_version: 
+  recorded_at: Mon, 04 Nov 2019 09:07:01 GMT
+- request:
+    method: get
+    uri: https://api.staging.tsek.asia/api/v1/account
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Api-Key:
+      - fHqAMXiD_kDc8hs-tv2m_gBxjFxJk1l3KdjAVlTFhY_KRMQGLMld3gf4GdU
+      Authorization:
+      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozNDgsImV4cCI6MTYwNDQ4MDgyMX0.x95PFnTdRf9YWqgjICYaZbBAZhrYT1TCH4tMsHlNXJU
+      User-Agent:
+      - Faraday v0.17.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.14.0 (Ubuntu)
+      Date:
+      - Mon, 04 Nov 2019 09:07:02 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Etag:
+      - W/"09ef75b3f7a1df5c27e550e870fb1c6a"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - c5552a67-cfcb-49ad-a273-c1670cb043d5
+      X-Runtime:
+      - '0.005969'
+      Vary:
+      - Origin
+    body:
+      encoding: UTF-8
+      string: '{"id":348,"first_name":"Richard","middle_name":"Angelo","last_name":"Praxedes","username":"Maruyama","email":"richard@fullsuite.ph","created_at":"2019-09-04T07:04:13.323Z","updated_at":"2019-11-04T01:34:33.806Z","disabled_at":null,"membership":null,"role":"moderator","require_password_reset":false,"full_name":"Richard
+        Angelo Praxedes","moderatorships":[{"id":1,"name":"Tseklis Payroll"}]}'
+    http_version: 
+  recorded_at: Mon, 04 Nov 2019 09:07:02 GMT
+recorded_with: VCR 5.0.0

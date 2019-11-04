@@ -1,0 +1,122 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.staging.tsek.asia/api/v1/apps/1/subscriptions
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Api-Key:
+      - fHqAMXiD_kDc8hs-tv2m_gBxjFxJk1l3KdjAVlTFhY_KRMQGLMld3gf4GdU
+      Authorization:
+      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozNDgsImV4cCI6MTYwNDQ4MTk5MH0.IJEBZ253peGgTpoUUwg7hHB0RTKtpCPdQUtBq4YmPKs
+      User-Agent:
+      - Faraday v0.17.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.14.0 (Ubuntu)
+      Date:
+      - Mon, 04 Nov 2019 09:28:01 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Etag:
+      - W/"abf2c664fc2462df653c0fe257b8431a"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - b7effc4d-a4d0-4f16-8438-8a581b99a960
+      X-Runtime:
+      - '0.067710'
+      Vary:
+      - Origin
+    body:
+      encoding: UTF-8
+      string: '[{"id":1,"company":{"name":"Engage Spark PH","slug":"esph","created_at":"2019-06-28T05:26:54.332Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.646Z","active":true},{"id":2,"company":{"name":"Kalibrr
+        Technology Ventures, Inc","slug":"ktv","created_at":"2019-06-28T12:43:51.813Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.653Z","active":true},{"id":3,"company":{"name":"Offshore
+        Concept Consulting Inc - FullSuite","slug":"vgc-occi","created_at":"2019-06-29T05:42:49.752Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.658Z","active":true},{"id":4,"company":{"name":"Culture
+        Group Philippines","slug":"cgph","created_at":"2019-06-29T05:48:26.013Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.663Z","active":true},{"id":5,"company":{"name":"Viascari
+        Inc","slug":"vgc-viascari","created_at":"2019-06-29T06:21:52.075Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.668Z","active":true},{"id":6,"company":{"name":"Meraki
+        Resto Bar Inc","slug":"vgc-meraki","created_at":"2019-06-29T06:38:33.979Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.673Z","active":true},{"id":7,"company":{"name":"PacketHost,
+        Inc","slug":"packet","created_at":"2019-06-29T07:06:15.113Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.677Z","active":true},{"id":8,"company":{"name":"TeeTalk.PH
+        Inc","slug":"vgc-teetalk","created_at":"2019-06-29T07:31:19.128Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.682Z","active":true},{"id":9,"company":{"name":"Maria
+        Health PH Inc.","slug":"mariahealth","created_at":"2019-06-29T07:31:48.792Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.687Z","active":true},{"id":10,"company":{"name":"Thinking
+        Machines Data Science Inc.","slug":"thinkingmachines","created_at":"2019-06-29T07:55:47.888Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.692Z","active":true},{"id":11,"company":{"name":"Stevie
+        Agency, Inc","slug":"stevie","created_at":"2019-06-29T09:17:58.232Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.697Z","active":true},{"id":12,"company":{"name":"CORNERSTONE
+        PERFORMANCE INTERNATIONAL INC","slug":"cspi","created_at":"2019-06-29T10:11:48.304Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.701Z","active":true},{"id":13,"company":{"name":"Solterra
+        Renewable Energy Corporation","slug":"solterra","created_at":"2019-07-16T08:08:53.107Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.706Z","active":true},{"id":14,"company":{"name":"KALIBRR
+        TECHNOLOGY VENTURES INC","slug":"kalibrrtv","created_at":"2019-09-27T04:06:02.116Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.711Z","active":true},{"id":15,"company":{"name":"ABC","slug":"wwwabccom","created_at":"2019-10-04T08:12:30.364Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.716Z","active":true},{"id":16,"company":{"name":"Chokkos
+        Bakeshop","slug":"Chokkos","created_at":"2019-10-05T08:47:46.656Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.722Z","active":true},{"id":17,"company":{"name":"test
+        company","slug":"test-company","created_at":"2019-10-07T04:48:52.734Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.728Z","active":true},{"id":18,"company":{"name":"Alunig","slug":"alunig","created_at":"2019-10-08T02:23:26.134Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.733Z","active":true},{"id":19,"company":{"name":"Callangan","slug":"contentxcreative","created_at":"2019-10-09T08:37:12.493Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.738Z","active":true},{"id":20,"company":{"name":"Company
+        X","slug":"slughere","created_at":"2019-10-09T10:47:28.299Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.743Z","active":true},{"id":21,"company":{"name":"Your
+        Company Name Here","slug":"thisishowitstarts","created_at":"2019-10-09T14:31:02.414Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.748Z","active":true},{"id":22,"company":{"name":"Your
+        Company Name Goes Here","slug":"thisiswhereitstarts","created_at":"2019-10-09T14:32:39.355Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.753Z","active":true},{"id":23,"company":{"name":"Eduard
+        may not need help anymore","slug":"eduard-may-not-need-help-anymore","created_at":"2019-10-04T06:03:25.146Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.759Z","active":true},{"id":24,"company":{"name":"San
+        Miguel Corporations","slug":"lasenggoinc","created_at":"2019-10-10T15:38:59.625Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.764Z","active":true},{"id":25,"company":{"name":"Eduard,
+        just stop this","slug":"eduard-just-stop-this","created_at":"2019-10-08T09:38:26.944Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.769Z","active":true},{"id":26,"company":{"name":"Company
+        That Eduard Needs to Test","slug":"company-that-eduard-needs-to-test","created_at":"2019-10-04T05:37:42.902Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.773Z","active":true},{"id":27,"company":{"name":"Viascari,
+        Inc.","slug":"viascariph","created_at":"2019-06-20T10:13:03.058Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.778Z","active":true},{"id":28,"company":{"name":"ZZYZX","slug":"zzyzx","created_at":"2019-10-22T04:17:29.935Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.784Z","active":true},{"id":29,"company":{"name":"Discipline
+        to Success","slug":"discipline-success","created_at":"2019-10-22T02:53:05.817Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.790Z","active":true},{"id":30,"company":{"name":"Last
+        Na Promise","slug":"last-na-promise","created_at":"2019-10-04T05:49:46.306Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.796Z","active":true},{"id":31,"company":{"name":"Eduard
+        needs help","slug":"eduard-needs-help","created_at":"2019-10-04T06:00:09.482Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.801Z","active":true},{"id":32,"company":{"name":"Eduard''s
+        Other Test Company","slug":"eduards_other_test_company","created_at":"2019-10-22T05:43:31.411Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.806Z","active":true},{"id":33,"company":{"name":"Princess
+        Tiara","slug":"princess_tiara","created_at":"2019-10-22T05:46:15.270Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.811Z","active":true},{"id":34,"company":{"name":"Kalibrr
+        Talent Services","slug":"kts","created_at":"2019-06-28T02:24:33.060Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.816Z","active":true},{"id":35,"company":{"name":"test123","slug":"test123","created_at":"2019-10-24T05:59:27.541Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.821Z","active":true},{"id":36,"company":{"name":"Growth
+        Rocket Consultancy, Inc","slug":"grc-inc","created_at":"2019-06-28T01:54:31.607Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.826Z","active":true},{"id":37,"company":{"name":"Hopefully
+        Eduard''s Last Test","slug":"hopefully-eduards-last-test","created_at":"2019-10-04T05:48:32.666Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.830Z","active":true},{"id":38,"company":{"name":"Eduard
+        Sample","slug":"eduard-sample","created_at":"2019-10-04T06:20:47.215Z","disabled_at":null},"app":{"id":1,"name":"Tseklis
+        Payroll"},"created_at":"2019-11-04T02:08:21.835Z","active":true}]'
+    http_version: 
+  recorded_at: Mon, 04 Nov 2019 09:28:01 GMT
+recorded_with: VCR 5.0.0
