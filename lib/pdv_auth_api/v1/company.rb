@@ -31,17 +31,19 @@ module PdvAuthApi
       end
 
       def all
-        @response = if account.role == 'super_admin'
-                      authenticated_api.get 'admin/companies'
-                    elsif account.role == 'moderator'
-                      fetch_subscribers
-                    else
-                      authenticated_api.get 'companies'
-                    end
+        unless account.role == 'moderator'
+          @response = if account.role == 'super_admin'
+                        authenticated_api.get 'admin/companies'
+                      else
+                        authenticated_api.get 'companies'
+                      end
 
-        body = JSON.parse(@response.body, symbolize_names: true)
+          body = JSON.parse(@response.body, symbolize_names: true)
 
-        status_200? body
+          status_200? body
+        else
+          return fetch_subscribers if @errors.nil?
+        end
       end
 
       def find(**params)
@@ -144,21 +146,23 @@ module PdvAuthApi
       end
 
       def fetch_subscribers
-        params = { app: { api_key: PdvAuthApi.config.api_key } }
+        params = { app: { api_key: 'BduM259o9-03rDVkVHtqbH5IrrbKvP-vAcEr_N3VowEQVN4jHcgeG2IsnUM' } }
+
+        Rails.logger.info "#{account}"
 
         @response = authenticated_api.post('apps/find_by_key', params.to_json)
 
         current_app = JSON.parse(@response.body, symbolize_names: true)
 
         account.moderatorships.each do |app|
-          next unless current_app.id == app.id
+          next unless current_app[:id] == app[:id]
 
           @response = authenticated_api
-                        .get "apps/#{current_app.id}/subscriptions"
+                        .get "apps/#{app[:id]}/subscriptions"
 
           subscribers = JSON.parse(@response.body, symbolize_names: true)
 
-          return [] unless subscribers.empty?
+          return '[]' if subscribers.empty?
 
           format_subscribers_to_companies(subscribers)
 
@@ -170,8 +174,10 @@ module PdvAuthApi
         companies = []
 
         subscribers.each do |subscribing|
-          companies << subscribing.company
+          companies << subscribing[:company]
         end
+
+        companies.to_json
       end
 
       def status_200?(body)
