@@ -4,7 +4,8 @@ module PdvAuthApi
       attr_accessor :token, :user, :response, :errors,
                     :id, :first_name, :middle_name, :last_name, :email,
                     :created_at, :updated_at, :username, :membership,
-                    :disabled_at, :role, :require_password_reset, :full_name
+                    :disabled_at, :role, :require_password_reset, :full_name,
+                    :moderatorships
 
       EDITABLE_ATTRIBUTES = %i[
         first_name middle_name last_name email username
