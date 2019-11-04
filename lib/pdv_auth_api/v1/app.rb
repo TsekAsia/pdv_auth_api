@@ -5,7 +5,17 @@ module PdvAuthApi
 
       class << self
         def find(**params)
-          @response = api.get "apps/#{params[:id]}"
+          @response = authenticated_api.get "apps/#{params[:id]}"
+
+          body = JSON.parse(@response.body, symbolize_names: true)
+
+          return nil unless body[:exists]
+
+          new(body[:app])
+        end
+
+        def subscriptions(**params)
+          @response = authenticated_api.get "apps/#{params[:id]}/subscriptions"
 
           body = JSON.parse(@response.body, symbolize_names: true)
 
@@ -16,8 +26,8 @@ module PdvAuthApi
 
         private
 
-        def api
-          PdvAuthApi::Connection.new.api
+        def authenticated_api
+          PdvAuthApi::Connection.new(token: @token).api
         end
       end
     end
