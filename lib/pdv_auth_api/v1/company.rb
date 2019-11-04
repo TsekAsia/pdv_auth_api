@@ -33,18 +33,15 @@ module PdvAuthApi
       def all
         @response = if account.role == 'super_admin'
                       authenticated_api.get 'admin/companies'
+                    elsif account.role == 'moderator'
+                      fetch_subscribers
                     else
                       authenticated_api.get 'companies'
                     end
 
         body = JSON.parse(@response.body, symbolize_names: true)
 
-        if @response.status == 200
-          body
-        else
-          @errors = body.error
-          false
-        end
+        status_200? body
       end
 
       def find(**params)
@@ -99,12 +96,7 @@ module PdvAuthApi
         @response = authenticated_api.get "companies/#{slug}/my_membership"
         body = JSON.parse(@response.body, symbolize_names: true)
 
-        if @response.status == 200
-          body
-        else
-          @errors = body.error
-          false
-        end
+        status_200? body
       end
 
       def add_members(emails)
@@ -115,24 +107,14 @@ module PdvAuthApi
         )
         body = JSON.parse(@response.body, symbolize_names: true)
 
-        if @response.status == 200
-          body
-        else
-          @errors = body.errors
-          false
-        end
+        status_200? body
       end
 
       def members
         @response = authenticated_api.get "companies/#{slug}/members"
         body = JSON.parse(@response.body, symbolize_names: true)
 
-        if @response.status == 200
-          body
-        else
-          @errors = body.error
-          false
-        end
+        status_200? body
       end
 
       def change_role(**params)
@@ -148,12 +130,7 @@ module PdvAuthApi
         )
         body = JSON.parse(@response.body, symbolize_names: true)
 
-        if @response.status == 200
-          body
-        else
-          @errors = body.errors
-          false
-        end
+        status_200? body
       end
 
       private
@@ -164,6 +141,44 @@ module PdvAuthApi
 
       def assign_attributes(params)
         params.each { |key, attr| send(:"#{key}=", attr) }
+      end
+
+      def fetch_subscribers
+        params = { app: { api_key: PdvAuthApi.config.api_key } }
+
+        @response = authenticated_api.post('apps/find_by_key', params: params)
+
+        current_app = JSON.parse(@response.body, symbolize_names: true)
+
+        account.moderatorships.each do |app|
+          next unless current_app.id == app.id
+
+          @response = authenticated_api
+                        .get "apps/#{current_app.id}/subscriptions"
+
+          subscribers = JSON.parse(@response.body, symbolize_names: true)
+
+          return [] unless subscribers.empty?
+
+          format_subscribers_to_companies(subscribers)
+
+          break
+        end
+      end
+
+      def format_subscribers_to_companies(subscribers)
+        companies = []
+
+        subscribers.each do |subscribing|
+          companies << subscribing.company
+        end
+      end
+
+      def status_200?(body)
+        return body if @response.status == 200
+
+        @errors = body.error
+        false
       end
     end
   end
