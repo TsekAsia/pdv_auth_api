@@ -146,7 +146,7 @@ module PdvAuthApi
       def fetch_subscribers
         params = { app: { api_key: PdvAuthApi.config.api_key } }
 
-        @response = authenticated_api.post('apps/find_by_key', params: params)
+        @response = authenticated_api.post('apps/find_by_key', params.to_json)
 
         current_app = JSON.parse(@response.body, symbolize_names: true)
 
