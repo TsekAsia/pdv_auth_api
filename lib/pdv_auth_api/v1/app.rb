@@ -24,6 +24,12 @@ module PdvAuthApi
           new(body[:app])
         end
 
+        def my_app
+          @response = authenticated_api.get "apps/my_id"
+
+          body = JSON.parse(@response.body, symbolize_names: true)
+        end
+
         private
 
         def authenticated_api
