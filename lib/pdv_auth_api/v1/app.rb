@@ -37,7 +37,7 @@ module PdvAuthApi
         private
 
         def assign_attributes(params)
-          params.each { |key, attr| send(:"#{key}=", attr) }
+          params.each { |key, attr| try(:"#{key}=", attr) }
         end
 
         def authenticated_api
