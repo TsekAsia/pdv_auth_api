@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.staging.tsek.asia/api/v1/apps/1/subscriptions
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Api-Key:
+      - fHqAMXiD_kDc8hs-tv2m_gBxjFxJk1l3KdjAVlTFhY_KRMQGLMld3gf4GdU
+      Authorization:
+      - Token eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozNDgsImV4cCI6MTYwNDQ4MTk5MH0.IJEBZ253peGgTpoUUwg7hHB0RTKtpCPdQUtBq4YmPKs
+      User-Agent:
+      - Faraday v0.17.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.14.0 (Ubuntu)
+      Date:
+      - Mon, 04 Nov 2019 09:28:01 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Etag:
+      - W/"abf2c664fc2462df653c0fe257b8431a"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - b7effc4d-a4d0-4f16-8438-8a581b99a960
+      X-Runtime:
+      - '0.067710'
+      Vary:
+      - Origin
+    body:
+      encoding: UTF-8
+      string: '[{"id":1,"company":{"name":"Company","slug":"company","created_at":"2019-06-28T05:26:54.332Z","disabled_at":null},"app":{"id":1,"name":"App"},"created_at":"2019-11-04T02:08:21.646Z","active":true}]'
+    http_version:
+  recorded_at: Mon, 04 Nov 2019 09:28:01 GMT
+recorded_with: VCR 5.0.0
