@@ -15,7 +15,7 @@ describe 'GET api/companies' do
           VCR.use_cassette('company_all') do
             get api_companies_url, headers: {
               'Authorization': "Token #{token}"
-              }, as: :json
+            }, as: :json
           end
         end
       end
@@ -47,7 +47,7 @@ describe 'GET api/companies' do
               VCR.use_cassette('app_id_get_success') do
                 get api_companies_url, headers: {
                   'Authorization': "Token #{token}"
-                  }, as: :json
+                }, as: :json
               end
             end
           end

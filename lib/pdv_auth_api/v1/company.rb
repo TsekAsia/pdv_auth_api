@@ -31,7 +31,9 @@ module PdvAuthApi
       end
 
       def all
-        unless account.role == 'moderator'
+        if account.role == 'moderator'
+          return fetch_subscribers if @errors.nil?
+        else
           @response = if account.role == 'super_admin'
                         authenticated_api.get 'admin/companies'
                       else
@@ -41,8 +43,6 @@ module PdvAuthApi
           body = JSON.parse(@response.body, symbolize_names: true)
 
           status_200? body
-        else
-          return fetch_subscribers if @errors.nil?
         end
       end
 
@@ -154,11 +154,11 @@ module PdvAuthApi
           next unless current_app[:id] == app[:id]
 
           @response = authenticated_api
-                        .get "apps/#{app[:id]}/subscriptions"
+                      .get "apps/#{app[:id]}/subscriptions"
 
           subscribers = JSON.parse(@response.body, symbolize_names: true)
 
-          return '[]' if subscribers.empty? || subscribers.nil?
+          return '[]' if subscribers.empty?
 
           all_companies = format_subscribers_to_companies(subscribers)
 
