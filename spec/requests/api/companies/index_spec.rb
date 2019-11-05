@@ -15,7 +15,7 @@ describe 'GET api/companies' do
           VCR.use_cassette('company_all') do
             get api_companies_url, headers: {
               'Authorization': "Token #{token}"
-            }, as: :json
+              }, as: :json
           end
         end
       end
@@ -44,9 +44,11 @@ describe 'GET api/companies' do
         VCR.use_cassette('accounts_get_success_moderator') do
           VCR.use_cassette('moderating_apps_all') do
             VCR.use_cassette('subscribers_all') do
-              get api_companies_url, headers: {
-                'Authorization': "Token #{token}"
-                }, as: :json
+              VCR.use_cassette('app_id_get_success') do
+                get api_companies_url, headers: {
+                  'Authorization': "Token #{token}"
+                  }, as: :json
+              end
             end
           end
         end
@@ -59,7 +61,6 @@ describe 'GET api/companies' do
       end
 
       it 'returns a company hash' do
-        puts json
         expect(json.first.keys).to contain_exactly(
           :name, :slug, :created_at, :disabled_at
         )
