@@ -146,13 +146,9 @@ module PdvAuthApi
       end
 
       def fetch_subscribers
-        params = { app: { api_key: 'BduM259o9-03rDVkVHtqbH5IrrbKvP-vAcEr_N3VowEQVN4jHcgeG2IsnUM' } }
+        current_app = PdvAuthApi::V1::App.my_app
 
-        Rails.logger.info "#{account}"
-
-        @response = authenticated_api.post('apps/find_by_key', params.to_json)
-
-        current_app = JSON.parse(@response.body, symbolize_names: true)
+        all_companies = []
 
         account.moderatorships.each do |app|
           next unless current_app[:id] == app[:id]
@@ -162,12 +158,13 @@ module PdvAuthApi
 
           subscribers = JSON.parse(@response.body, symbolize_names: true)
 
-          return '[]' if subscribers.empty?
+          return '[]' if subscribers.empty? || subscribers.nil?
 
-          format_subscribers_to_companies(subscribers)
+          all_companies = format_subscribers_to_companies(subscribers)
 
           break
         end
+        all_companies
       end
 
       def format_subscribers_to_companies(subscribers)
