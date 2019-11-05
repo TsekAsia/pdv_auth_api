@@ -42,13 +42,11 @@ describe 'GET api/companies' do
     before do
       VCR.use_cassette('auth_login_valid_token') do
         VCR.use_cassette('accounts_get_success_moderator') do
-          VCR.use_cassette('moderating_apps_all') do
-            VCR.use_cassette('subscribers_all') do
-              VCR.use_cassette('app_id_get_success') do
-                get api_companies_url, headers: {
-                  'Authorization': "Token #{token}"
-                }, as: :json
-              end
+          VCR.use_cassette('subscribers_all') do
+            VCR.use_cassette('app_id_get_success') do
+              get api_companies_url, headers: {
+                'Authorization': "Token #{token}"
+              }, as: :json
             end
           end
         end
