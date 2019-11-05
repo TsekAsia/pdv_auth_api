@@ -3,6 +3,10 @@ module PdvAuthApi
     class App
       attr_accessor :app, :id, :name, :errors, :token
 
+      def initialize(**params)
+        assign_attributes(params)
+      end
+
       class << self
         def find(**params)
           @response = authenticated_api.get "apps/#{params[:id]}"
@@ -31,6 +35,10 @@ module PdvAuthApi
         end
 
         private
+
+        def assign_attributes(params)
+          params.each { |key, attr| try(:"#{key}=", attr) }
+        end
 
         def authenticated_api
           PdvAuthApi::Connection.new(token: @token).api

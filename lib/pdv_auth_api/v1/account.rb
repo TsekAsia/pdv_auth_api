@@ -34,7 +34,7 @@ module PdvAuthApi
         end
 
         def assign_attributes(params)
-          params.each { |key, attr| send(:"#{key}=", attr) }
+          params.each { |key, attr| try(:"#{key}=", attr) }
         end
       end
 
@@ -137,7 +137,7 @@ module PdvAuthApi
       end
 
       def assign_attributes(params)
-        params.each { |key, attr| send(:"#{key}=", attr) }
+        params.each { |key, attr| try(:"#{key}=", attr) }
       end
     end
   end
