@@ -49,17 +49,15 @@ module PdvAuthApi
       def find(**params)
         assign_attributes(params)
 
-        @response = authenticated_api.get "companies/#{slug}"
+        @response = if account.role == 'member'
+                      authenticated_api.get "companies/#{slug}"
+                    else
+                      authenticated_api.get "admin/companies/#{slug}"
+                    end
+
         body = JSON.parse(@response.body, symbolize_names: true)
 
-        if @response.status == 200
-          @company = body
-          assign_attributes(body)
-          self
-        else
-          @errors = body.error
-          false
-        end
+        company_operation_success body
       end
 
       def update(**params)
@@ -72,14 +70,7 @@ module PdvAuthApi
         )
         body = JSON.parse(@response.body, symbolize_names: true)
 
-        if @response.status == 200
-          @company = body
-          assign_attributes(body)
-          self
-        else
-          @errors = body.errors
-          false
-        end
+        company_operation_success body
       end
 
       def save
@@ -182,6 +173,17 @@ module PdvAuthApi
 
         @errors = body.error
         false
+      end
+
+      def company_operation_success(body)
+        if @response.status == 200
+          @company = body
+          assign_attributes(body)
+          self
+        else
+          @errors = body.error
+          false
+        end
       end
     end
   end
