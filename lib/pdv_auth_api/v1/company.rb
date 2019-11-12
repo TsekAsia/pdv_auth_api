@@ -194,6 +194,7 @@ module PdvAuthApi
 
       def admin_params
         company_profile = company.company
+
         {
           company: company_profile,
           user: JSON.parse(
