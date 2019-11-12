@@ -193,8 +193,10 @@ module PdvAuthApi
       end
 
       def admin_params
+        company_profile = company.company
+
         {
-          company: company,
+          company: company_profile,
           user: JSON.parse(
             account.to_json, symbolize_names: true
           ).except(:token),
