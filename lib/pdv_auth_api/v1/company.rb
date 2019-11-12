@@ -49,10 +49,11 @@ module PdvAuthApi
       def find(**params)
         assign_attributes(params)
 
-        @response = if account.role == 'member'
-                      authenticated_api.get "companies/#{slug}"
-                    else
+        @response = if account.role == 'super_admin' ||
+                       account.role == 'moderator'
                       authenticated_api.get "admin/companies/#{slug}"
+                    else
+                      authenticated_api.get "companies/#{slug}"
                     end
 
         body = JSON.parse(@response.body, symbolize_names: true)
