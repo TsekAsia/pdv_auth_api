@@ -49,10 +49,11 @@ module PdvAuthApi
       def find(**params)
         assign_attributes(params)
 
-        @response = if account.role == 'member'
-                      authenticated_api.get "companies/#{slug}"
-                    else
+        @response = if account.role == 'super_admin' ||
+                       account.role == 'moderator'
                       authenticated_api.get "admin/companies/#{slug}"
+                    else
+                      authenticated_api.get "companies/#{slug}"
                     end
 
         body = JSON.parse(@response.body, symbolize_names: true)
@@ -87,7 +88,12 @@ module PdvAuthApi
 
       def membership
         @response = authenticated_api.get "companies/#{slug}/my_membership"
+
         body = JSON.parse(@response.body, symbolize_names: true)
+
+        if body[:error].present? && account.role != 'member'
+          return assign_attributes(admin_params) unless account.role == 'member'
+        end
 
         status_200? body
       end
@@ -184,6 +190,17 @@ module PdvAuthApi
           @errors = body.error
           false
         end
+      end
+
+      def admin_params
+        {
+          company: company,
+          user: JSON.parse(
+            account.to_json, symbolize_names: true
+          ).except(:token),
+          created_at: company[:created_at],
+          role: 'administrator'
+        }
       end
     end
   end
