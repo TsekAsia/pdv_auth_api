@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pdv_auth_api (0.1.13)
+    pdv_auth_api (0.1.14)
       faraday
       oj
       rails (~> 5.2.3)
