@@ -87,15 +87,22 @@ module PdvAuthApi
       end
 
       def membership
-        @response = authenticated_api.get "companies/#{slug}/my_membership"
+        if account.role != 'member'
+          admin_params = {
+            company: {},
+            user: {},
+            created_at: Time.now,
+            role: 'administrator'
+          }
 
-        body = JSON.parse(@response.body, symbolize_names: true)
+          assign_attributes(admin_params)
+        else
+          @response = authenticated_api.get "companies/#{slug}/my_membership"
 
-        if body[:error].present? && account.role != 'member'
-          return assign_attributes(admin_params) unless account.role == 'member'
+          body = JSON.parse(@response.body, symbolize_names: true)
+
+          status_200? body
         end
-
-        status_200? body
       end
 
       def add_members(emails)
@@ -190,19 +197,6 @@ module PdvAuthApi
           @errors = body.error
           false
         end
-      end
-
-      def admin_params
-        company_profile = company.company
-
-        {
-          company: company_profile,
-          user: JSON.parse(
-            account.to_json, symbolize_names: true
-          ).except(:token),
-          created_at: company[:created_at],
-          role: 'administrator'
-        }
       end
     end
   end
