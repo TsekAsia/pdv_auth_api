@@ -139,7 +139,7 @@ module PdvAuthApi
         status_200? body
       end
 
-      def update_member(**params)
+      def update_member(params = {})
         sanitized_params = {
           user_id: params[:user_id],
           user: params.select do |key, _val|
