@@ -139,7 +139,7 @@ module PdvAuthApi
         status_200? body
       end
 
-      def update_member_account(**params)
+      def update_member(**params)
         sanitized_params = {
           user_id: params[:user_id],
           user: params.select do |key, _val|
@@ -148,7 +148,7 @@ module PdvAuthApi
         }.to_json
 
         @response = authenticated_api.patch(
-          "companies/#{slug}/update_member_account", sanitized_params
+          "companies/#{slug}/update_member", sanitized_params
         )
         body = JSON.parse(@response.body, symbolize_names: true)
 
