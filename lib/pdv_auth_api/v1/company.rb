@@ -139,6 +139,22 @@ module PdvAuthApi
         status_200? body
       end
 
+      def update_member_account(**params)
+        sanitized_params = {
+          user_id: params[:user_id],
+          user: params.select do |key, _val|
+            PdvAuthApi::V1::Account::EDITABLE_ATTRIBUTES.include?(key)
+          end
+        }.to_json
+
+        @response = authenticated_api.patch(
+          "companies/#{slug}/update_member_account", sanitized_params
+        )
+        body = JSON.parse(@response.body, symbolize_names: true)
+
+        status_200? body
+      end
+
       private
 
       def authenticated_api
