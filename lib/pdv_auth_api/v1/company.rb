@@ -142,9 +142,9 @@ module PdvAuthApi
       def update_member(params = {})
         sanitized_params = {
           user_id: params[:user_id],
-          user: params.select do |key, _val|
-            PdvAuthApi::V1::Account::EDITABLE_ATTRIBUTES.include?(key)
-          end
+          user: {
+            email: params[:email]
+          }
         }.to_json
 
         @response = authenticated_api.patch(
