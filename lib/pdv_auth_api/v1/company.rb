@@ -200,7 +200,7 @@ module PdvAuthApi
       def status_200?(body)
         return body if @response.status == 200
 
-        @errors = body.error
+        @errors = body[:errors] || body.error
         false
       end
 
